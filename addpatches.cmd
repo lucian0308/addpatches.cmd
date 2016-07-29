@@ -56,6 +56,12 @@ set force_install=False
 
 REM SETTINGS END
 
+net session >nul 2>&1
+if not !ERRORLEVEL!==0 (
+	echo Error - this command prompt is not elevated
+	goto end
+)
+
 set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%SYSTEMROOT%\System32\dism.exe
