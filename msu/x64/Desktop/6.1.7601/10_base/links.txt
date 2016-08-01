@@ -1,6 +1,6 @@
-http://download.microsoft.com/download/0/4/A/04A4348A-EB14-461C-B5B1-25EEBB1A24B8/Windows6.1-KB3078601-x64.msu
-http://download.microsoft.com/download/3/3/F/33FFD46F-ED25-49FE-B89F-EC6269568F9B/Windows6.1-KB3164033-x64.msu
-http://download.microsoft.com/download/8/D/7/8D75A16B-5BC0-457A-BE97-A93566AB82D6/Windows6.1-KB3145739-x64.msu
-http://download.microsoft.com/download/A/4/8/A48BBC7A-8045-4ED7-A43F-FB5C9B686183/Windows6.1-KB3109094-x64.msu
-http://download.microsoft.com/download/B/7/C/B7CD3A70-1EA7-486A-9585-F6814663F1A9/Windows6.1-KB3138612-x64.msu
-http://download.microsoft.com/download/B/E/D/BEDBE8C8-8EF2-4D8C-B55C-7D1554CA9500/Windows6.1-KB3168965-x64.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows6.1-kb3078601-x64_df86415b7464c74c360cc7d2f2d9a3e49509bcf1.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows6.1-kb3109094-x64_229f0a31c680557039d084eb1a6249c17c921c8e.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/02/windows6.1-kb3138612-x64_f7b1de8ea7cf8faf57b0138c4068d2e899e2b266.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/04/windows6.1-kb3145739-x64_b9ae7ee29555dce4d1a225fd1324176a2538178a.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windows6.1-kb3164033-x64_88ef597e01e7698390e5b805514f32b2e447012f.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/06/windows6.1-kb3168965-x64_936c2cdb1a9d11deb25a2b28d98cd300eff933fb.msu
