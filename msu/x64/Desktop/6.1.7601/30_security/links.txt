@@ -14,6 +14,7 @@ http://download.microsoft.com/download/1/4/f/14f47ead-9c8b-4f3b-9661-89c135ea07c
 http://download.microsoft.com/download/1/6/4/164999f1-e0e4-4725-8468-98466efeeacf/windows6.1-kb2807986-x64.msu
 http://download.microsoft.com/download/1/a/4/1a46804c-b7dc-419b-9e42-3d04e34d38e5/windows6.1-kb2631813-x64.msu
 http://download.microsoft.com/download/1/d/e/1debdd12-42fe-4931-bb8f-9f5d6c47e358/windows6.1-kb2993651-x64.msu
+http://download.microsoft.com/download/2/0/1/201B400A-B5BB-47B6-B5C7-92B5A7587AEE/Windows6.1-KB3162835-x64.msu
 http://download.microsoft.com/download/2/1/d/21d6f5be-08b2-41d1-9852-599a8da3fc02/windows6.1-kb3075220-x64.msu
 http://download.microsoft.com/download/2/2/1/221537c9-915e-45f7-86d5-f74f2723f45b/windows6.1-kb2667402-v2-x64.msu
 http://download.microsoft.com/download/2/3/2/232223a7-6a93-4b03-bbb1-1d8988b615c8/windows6.1-kb3156016-x64.msu
