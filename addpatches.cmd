@@ -23,11 +23,11 @@ setlocal EnableDelayedExpansion
 REM SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=True
+set dryrun=False
 
 REM If True, the patches will be installed to the online system
 REM If False, the script will try to use the !install_wim!
-set online=True
+set online=False
 
 REM If True, the patches will added with dism instead of wusa
 REM You wont have a history in the windows update gui
@@ -45,9 +45,9 @@ set workdir=%SYSTEMDRIVE%\addpatches
 REM Location of the msu files
 set patches=%~dp0msu
 
-REM If True and links.txt exists, mssing patches will be downloaded
+REM If True and links.txt exists, not existing files will be downloaded
 set downloadpatches=True
-REM If True, all patches in the links will be redownloaded
+REM If True, all patches in the links.txt will be redownloaded
 set force_downloadpatches=False
 
 REM If True, always install all patches
@@ -81,6 +81,7 @@ set mount=!workdir!\mount
 
 set dism_installedpackages=!workdir!\dism_installedpackages.txt
 set systeminfo_installedpackages=!workdir!\systeminfo_installedpackages.txt
+set dism_features=!workdir!\dism_features.txt
 
 set patches_install=!workdir!\install
 
@@ -89,13 +90,20 @@ set wu_reg_name=NoAutoUpdate
 set wu_reg_tempvalue=1
 set wu_reg_savedvalue=?
 
+set exitcode=0
+
+net session >nul 2>&1
+if not !ERRORLEVEL!==0 (
+	echo Error - this command prompt is not elevated
+	goto end
+)
 
 :deleteold
 
 "!dism_exe!" /Get-MountedWimInfo | find /i "!mount!" >nul 2>&1
 if !ERRORLEVEL!==0 (
 	echo|set /p=Discarding and unmounting old mount dir... 
-	"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard >nul 2>&1
+	"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
 	set exitcode=!ERRORLEVEL!
 	echo !exitcode!
 	
@@ -141,10 +149,10 @@ if "!online!"=="True" (
 
 ) else (
 
-	echo Used system   : Online
+	echo Used system    : Offline
 	
-	echo WIM file      : !install_wim!
-	echo WIM Index     : !install_wim_index!
+	echo WIM file       : !install_wim!
+	echo WIM Index      : !install_wim_index!
 	
 	echo.
 
@@ -210,7 +218,7 @@ if "!online_dism!"=="True" (
 reg query "!wu_reg_path!" /v "!wu_reg_name!" >nul 2>&1
 if !ERRORLEVEL!==0 for /f "tokens=3" %%a in ('reg query "!wu_reg_path!" /v "!wu_reg_name!" ^| find /i "!wu_reg_name!"') do set /a wu_reg_savedvalue=%%a + 0
 
-echo|set /p=Setting !wu_reg_name! temporarily to True...
+echo|set /p=Setting !wu_reg_name! temporarily to !wu_reg_tempvalue!... 
 reg add "!wu_reg_path!" /v !wu_reg_name! /t REG_DWORD /d !wu_reg_tempvalue! /f >nul 2>&1
 set exitcode=!ERRORLEVEL!
 echo !exitcode!
@@ -277,9 +285,11 @@ if "!version!"=="?" (
 	goto end
 )
 
-goto getinstalledpatches
+goto getenabledfeatures
 
 :getofflineinfo
+
+echo.
 
 if not exist "!install_wim!" (
 	echo Error couldn't find !install_wim!
@@ -287,7 +297,7 @@ if not exist "!install_wim!" (
 )
 
 echo|set /p=Getting info of wim file... 
-"!dism_exe!" /English /Get-WimInfo /WimFile:"!install_wim!" /Index:!install_wim_index! > "!wiminfo!"
+"!dism_exe!" /Get-WimInfo /WimFile:"!install_wim!" /Index:!install_wim_index! /English > "!wiminfo!"
 set exitcode=!ERRORLEVEL!
 echo !exitcode!
 if not !exitcode!==0 (
@@ -335,8 +345,13 @@ del /f /q "!wiminfo!" >nul 2>&1
 
 md "!mount!" >nul 2>&1
 
-echo|set /p=Mounting index !install_wim_index! of wim file to mount dir...
-"%dism_exe%" /Mount-Wim /WimFile:!install_wim! /Index:!install_wim_index! /MountDir:"!mount!" >nul 2>&1
+if "!dryrun!"=="True" (
+	echo|set /p=Mounting index !install_wim_index! of wim file to mount dir (read-only)... 
+	"!dism_exe!" /Mount-Wim /WimFile:!install_wim! /Index:!install_wim_index! /MountDir:"!mount!" /ReadOnly /English >nul 2>&1
+) else (
+	echo|set /p=Mounting index !install_wim_index! of wim file to mount dir... 
+	"!dism_exe!" /Mount-Wim /WimFile:!install_wim! /Index:!install_wim_index! /MountDir:"!mount!" /English >nul 2>&1
+)
 set exitcode=!ERRORLEVEL!
 echo !exitcode!
 
@@ -347,6 +362,26 @@ if not !exitcode!==0 (
 
 timeout /t 3 >nul 2>&1
 
+:getenabledfeatures
+
+echo|set /p=Determinating enabled features... 
+if "!online!"=="True" (
+	"!dism_exe!" /Online /Get-Features /Format:Table /English > "!dism_features!"
+) else (
+	"!dism_exe!" /Image:"!mount!" /Get-Features /Format:Table /English > "!dism_features!"
+)
+set exitcode=!ERRORLEVEL!
+
+if not !exitcode!==0 (
+	echo !exitcode!
+	echo Error determinating enabled features
+	goto end
+)
+
+set count=0
+for /f %%f in ('type !dism_features! ^|find "| Enabled"') do set /a count+=1
+echo found !count! enabled features
+
 :getinstalledpatches
 if "!force_install!"=="True" goto installpatches
 
@@ -355,9 +390,9 @@ del /f /q "!systeminfo_installedpackages!" >nul 2>&1
 
 echo|set /p=Determinating installed KBs with dism... 
 if "!online!"=="True" (
-	"!dism_exe!" /Online /Get-Packages > "!dism_installedpackages!" 2>&1
+	"!dism_exe!" /Online /Get-Packages > "!dism_installedpackages!" /English 2>&1
 ) else (
-	"!dism_exe!" /Image:"!mount!" /Get-Packages > "!dism_installedpackages!" 2>&1
+	"!dism_exe!" /Image:"!mount!" /Get-Packages > "!dism_installedpackages!" /English 2>&1
 )
 set exitcode=!ERRORLEVEL!
 
@@ -398,9 +433,9 @@ set patches=%patches%
 
 if not exist "!patches!" (
 
-	echo Error no matching dir for this system found
+	echo Error no matching dir found for !arch!\!producttype!\!version!
 	
-	echo|set /p=Creating !patches!...
+	echo|set /p=Creating dir !patches!...
 	md "!patches!" >nul 2>&1
 	echo !ERRORLEVEL!
 	
@@ -430,9 +465,9 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 			
 			echo.
 			if "!force_downloadpatches!"=="True" (
-				echo Force downloading all patches:
+				echo Force downloading all files:
 			) else (
-				echo Downloading only missing patches:
+				echo Downloading only missing files:
 			)
 			echo.
 			
@@ -458,7 +493,7 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 				if "!force_downloadpatches!"=="True" del /f /q !filename_ap! >nul 2>&1
 				
 				if exist "!filename_ap!" (
-					echo !index_zeroes!/!count! !TIME:~0,2!:!TIME:~3,2! !kb! seems to be already downloaded
+					if "!dryrun!"=="False" echo !index_zeroes!/!count! !TIME:~0,2!:!TIME:~3,2! !kb! seems to be already downloaded
 				) else (
 				
 					set job_number=%RANDOM%
@@ -535,7 +570,7 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 			)				
 		)
 		if "!install!"=="False" (		
-			echo !index_zeroes!/!count! !TIME:~0,2!:!TIME:~3,2! !kb! seems to be already installed
+			if "!dryrun!"=="False" echo !index_zeroes!/!count! !TIME:~0,2!:!TIME:~3,2! !kb! seems to be already installed
 		) else (
 			
 			if "!dryrun!"=="True" (
@@ -601,7 +636,7 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 					del /f /q "!patches_install!\*.msu" >nul 2>&1
 					
 					echo !TIME:~0,2!:!TIME:~3,2! - Installing online ^(dism^):
-					"!dism_exe!" /Online /Add-Package /PackagePath:"!patches_install!" /NoRestart
+					"!dism_exe!" /Online /Add-Package /PackagePath:"!patches_install!" /NoRestart /English
 					set exitcode=!ERRORLEVEL!
 					echo !exitcode!
 					if not !exitcode!==3010 if not !exitcode!==0 (					
@@ -653,7 +688,7 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 				echo !TIME:~0,2!:!TIME:~3,2! Would install offline ^(dism^) !kb!
 			) else (
 				echo !TIME:~0,2!:!TIME:~3,2! - Installing offline ^(dism^):
-				"%dism_exe%" /Image:!mount! /Add-Package /Packagepath:"!patches_install!" >nul 2>&1
+				"!dism_exe!" /Image:!mount! /Add-Package /Packagepath:"!patches_install!" /English
 				set exitcode=!ERRORLEVEL!
 				
 				if not !exitcode!==0 (
@@ -667,9 +702,12 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 
 :unmount
 if "!online!"=="True" goto end
+if "!dryrun!"=="True" goto end
+
+echo.
 
 echo|set /p=Commiting and unmounting mount dir... 
-"%dism_exe%" /Unmount-Wim /MountDir:!mount! /Commit
+"!dism_exe!" /Unmount-Wim /MountDir:!mount! /Commit /English >nul 2>&1
 set returncode=!ERRORLEVEL!
 echo !returncode!
 
@@ -683,6 +721,8 @@ timeout /t 3 >nul 2>&1
 	
 :end
 
+echo.
+
 taskkill /f /im dism.exe >nul 2>&1
 if !ERRORLEVEL!==0 echo Killed remaining dism.exe processes
 taskkill /f /im dism.exe >nul 2>&1
@@ -691,7 +731,7 @@ if !ERRORLEVEL!==0 echo Killed remaining dism.exe processes
 "!dism_exe!" /Get-MountedWimInfo | find /i "!mount!" >nul 2>&1
 if !ERRORLEVEL!==0 (
 	echo|set /p=Discarding and unmounting mount dir... 
-	"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard >nul 2>&1
+	"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
 	set returncode=!ERRORLEVEL!
 	echo !returncode!
 	
@@ -718,6 +758,21 @@ if exist "!workdir!" (
 
 if "!online!"=="True" (
 
+	sc query wuauserv | find "RUNNING" >nul 2>&1
+	if !ERRORLEVEL!==0 (
+		echo|set /p=Stopping wuauserv... 
+		net stop wuauserv >nul 2>&1
+		set returncode=!ERRORLEVEL!
+		echo !returncode!
+
+		if not !returncode!==0 (
+			if not !exitcode!==3010 if not !exitcode!==0 set exitcode=!returncode!  
+			echo Error stopping wuauserv
+		)
+		
+		timeout /t 3 >nul 2>&1
+	)
+	
 	if "!wu_reg_savedvalue!"=="?" (
 		
 		reg query "!wu_reg_path!" /v "!wu_reg_name!" >nul 2>&1
@@ -759,22 +814,7 @@ if "!online!"=="True" (
 			echo Error setting starttype for wuauserv to demand
 		)
 
-	)
-
-	sc query wuauserv | find "RUNNING" >nul 2>&1
-	if !ERRORLEVEL!==0 (
-		echo|set /p=Stopping wuauserv... 
-		net stop wuauserv >nul 2>&1
-		set returncode=!ERRORLEVEL!
-		echo !returncode!
-
-		if not !returncode!==0 (
-			if not !exitcode!==3010 if not !exitcode!==0 set exitcode=!returncode!  
-			echo Error stopping wuauserv
-		)
-		
-		timeout /t 3 >nul 2>&1
-	)
+	)	
 
 	echo|set /p=Starting wuauserv... 
 	net start wuauserv >nul 2>&1
