@@ -23,11 +23,15 @@ setlocal EnableDelayedExpansion
 REM SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=False
+set dryrun=True
 
 REM If True, the patches will be installed to the online system
 REM If False, the script will try to use the !install_wim!
-set online=False
+set online=True
+
+REM If True, it will start a new window, where you can follow the WindowsUpdate.log
+REM You will see some action there, if wusa is used to install the patches (online_dism=False)
+set follow_wulog=False
 
 REM If True, the patches will added with dism instead of wusa
 REM You wont have a history in the windows update gui
@@ -70,6 +74,7 @@ set systeminfo_exe=%SYSTEMROOT%\System32\systeminfo.exe
 set bitsadmin_exe=%SYSTEMROOT%\System32\bitsadmin.exe
 set expand_exe=%SYSTEMROOT%\System32\expand.exe
 set wusa_exe=%SYSTEMROOT%\System32\wusa.exe
+set powershell_exe=%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe
 
 set name=?
 set arch=?
@@ -213,6 +218,14 @@ if "!online_dism!"=="True" (
 	
 	goto getonlineinfo
 
+)
+
+if "!follow_wulog!"=="True" (
+	if not exist "!powershell_exe!" (
+		echo Error powershell.exe not found
+		goto end
+	)
+	start "" "!powershell_exe!" -Command Get-Content -Wait -Path $env:SYSTEMROOT\WindowsUpdate.log
 )
 
 reg query "!wu_reg_path!" /v "!wu_reg_name!" >nul 2>&1
@@ -532,9 +545,9 @@ for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches!"') do (
 	
 	echo.
 	if "!force_install!"=="True" (
-		echo Copying all packages:
+		echo Copying all packages for installation:
 	) else (
-		echo Copying only missing packages:
+		echo Copying only packages, which seems to be not installed:
 	)
 	echo.
 	
@@ -725,8 +738,8 @@ echo.
 
 taskkill /f /im dism.exe >nul 2>&1
 if !ERRORLEVEL!==0 echo Killed remaining dism.exe processes
-taskkill /f /im dism.exe >nul 2>&1
-if !ERRORLEVEL!==0 echo Killed remaining dism.exe processes
+taskkill /f /im powershell.exe >nul 2>&1
+if !ERRORLEVEL!==0 echo Killed remaining powershell.exe processes
 
 "!dism_exe!" /Get-MountedWimInfo | find /i "!mount!" >nul 2>&1
 if !ERRORLEVEL!==0 (
@@ -828,6 +841,7 @@ if "!online!"=="True" (
 	
 )
 
-echo exitcode - !exitcode!
+echo.
+echo Exitcode - !exitcode!
 timeout /t 10
 exit !exitcode!
