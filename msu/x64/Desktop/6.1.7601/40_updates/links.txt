@@ -8,6 +8,7 @@ http://download.windowsupdate.com/msdownload/update/software/updt/2012/11/window
 http://download.windowsupdate.com/msdownload/update/software/updt/2012/11/windows6.1-kb2685813-x64_22a969bada171678b0936bb320e6a7778e8adc07.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2012/11/windows6.1-kb2685811-x64_191e09df632b70fd4f4b27d4cb9227f7c5a1c98c.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2012/10/windows6.1-kb2592687-x64_f5cd9f3dab8cdbbf287fee84148e8ea69042bcc3.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2732487-v2-x64_90cdfa45eae23f853204394de11708a945785117.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2732059-v5-x64_102edb47f7704f3f1deb4ae6ace3f7e4f0ee9765.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2729094-v2-x64_e1a3ecc5030a51711f558f90dd1db52e24ce074b.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2719857-x64_b9f708b95abbab7341f310595b3dc65798cf316a.msu
@@ -17,7 +18,10 @@ http://download.windowsupdate.com/msdownload/update/software/updt/2011/10/window
 http://download.windowsupdate.com/msdownload/update/software/updt/2011/08/windows6.1-kb2563227-x64_3db1a7c4ee22e5d7e9a83b148ad6363a64d7c0f4.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2011/06/windows6.1-kb2547666-x64_28b78926b1b1a04a9867050ecb5e81857ebd5d66.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2011/06/windows6.1-kb2545698-x64_51753a436cc6358b6e3e15db9b43ffc97d523fc9.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/04/windows6.1-kb982018-v3-x64_7853a1c9c63611e17cd2c923704bf2e924bdfe7b.msu
 http://download.windowsupdate.com/msdownload/update/software/updt/2011/04/windows6.1-kb2506928-v2-x64_54e2c3d6b32d9ec399c2c4ace6f19018690156bd.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/07/windows6.1-kb3172605-x64_26f4cc7831a0d76393445b7b0a1a3ed5cd5b4047.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/07/windows6.1-kb2952664-v19-x64_2e5ee1abe464bab8d3b335a556edebdb4fdb3582.msu
 http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/05/windows6.1-kb3139923-v2-x64_d9fe5636da3c4368f3f00f1142c10b2aff150279.msu
 http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/03/windows6.1-kb3147071-x64_ad245aff79345024c2fdf632bfb23a75d3d32b22.msu
 http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/03/windows6.1-kb3138901-x64_0862c8499395c8801368c08c91f2e1f69875aa78.msu
@@ -52,6 +56,7 @@ http://download.windowsupdate.com/c/msdownload/update/software/updt/2015/11/wind
 http://download.windowsupdate.com/c/msdownload/update/software/updt/2015/03/windows6.1-kb3013531-v2-x64_1d6e98a0d77c0614b130dc19bd033d3f359d601b.msu
 http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/09/windows6.1-kb2985461-x64_377946b607f38477479b8e16517f3cf63243d97e.msu
 http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/04/windows6.1-kb2908783-x64_cc0fdf4fd413cf7ff72452f0a87d257e3f49901f.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/02/windows6.1-kb2923545-x64_d263a19b8935efa334ef713cfbfecede3c51a3d1.msu
 http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/02/windows6.1-kb2919469-x64_86cda4c626b085836b92ee00a182f1c20bb93c7b.msu
 http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/02/windows6.1-kb2918077-x64_d746e693d2f70955ca8e61c9492e72dcfa12adb8.msu
 http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/02/windows6.1-kb2843630-v3-x64_c09a116ad2c934ab80ce818ecc0a72953495c4b2.msu
