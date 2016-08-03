@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/ftpk/2015/01/windows8.1-kb2934520-x64_286f467424417d1bf5638abad7fb75db318ccf8a.msu
+http://download.windowsupdate.com/d/msdownload/update/software/ftpk/2016/01/windows8.1-kb3102467-x64_f18e30847e0402c22cd4aadec832fc860dbc344e.msu
