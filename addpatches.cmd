@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 REM COMMON SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=True
+set dryrun=False
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
@@ -43,15 +43,25 @@ REM If True, all patches in the links.txt will be redownloaded
 set force_downloadpatches=False
 
 REM If True and !downloadpatches!=True the script will only download the patches
-set downloadonly=False
+set downloadonly=True
 
 REM Uncomment to force a specific arch, product type and version
 REM Useful in combination with !downloadonly! to download for a foreign system
 
+REM set force_name=Windows Vista SP2
+REM set force_arch=x64
+REM set force_producttype=Desktop
+REM set force_version=6.0.6002
+
 REM set force_name=Windows 7 SP1
-REM set force_arch=x86
+REM set force_arch=x64
 REM set force_producttype=Desktop
 REM set force_version=6.1.7601
+
+set force_name=Windows Server 2008 R2
+set force_arch=x64
+set force_producttype=Server
+set force_version=6.1.7601
 
 REM set force_name=Windows 8.1
 REM set force_arch=x64
@@ -75,14 +85,15 @@ REM If True, log it a package is already downloaded and/or installed
 set log_found=True
 
 REM If True, the script will pause at the end
-set pause_end=True
+REM If you press any key after the summary in the beginning !pause_end! will become automatically True
+set pause_end=False
 
 REM COMMON SETTINGS END
 
 
 REM ONLINE SETTINGS START
 
-REM If True, this script will stop if a wusa installation exits not with returncde 0 or 3010
+REM If True, this script will stop if a wusa installation exits not with returncde 0, 3010 or 2359302
 set wusa_exitonerror=False
 
 REM If True, the patches will added with dism instead of wusa
@@ -185,17 +196,19 @@ if not !ERRORLEVEL!==0 (
 
 :deleteold
 
-"!dism_exe!" /Get-MountedWimInfo | !find_exe! /i "!mount!" >nul 2>&1
-if !ERRORLEVEL!==0 (
-	echo|set /p=!TIME:~0,2!:!TIME:~3,2! Discarding and unmounting old mount dir... 
-	"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
-	set exitcode=!ERRORLEVEL!
-	echo !exitcode!
-	
-	if not !exitcode!==0 (
-		echo.
-		echo ERROR discarding and unmounting old mount dir
-		goto end
+if exist "!dism_exe!" (
+	"!dism_exe!" /Get-MountedWimInfo | !find_exe! /i "!mount!" >nul 2>&1
+	if !ERRORLEVEL!==0 (
+		echo|set /p=!TIME:~0,2!:!TIME:~3,2! Discarding and unmounting old mount dir... 
+		"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
+		set exitcode=!ERRORLEVEL!
+		echo !exitcode!
+		
+		if not !exitcode!==0 (
+			echo.
+			echo ERROR discarding and unmounting old mount dir
+			goto end
+		)
 	)
 )
 
@@ -284,7 +297,12 @@ if not "!downloadonly!"=="True" (
 	if "!installallatonce!"=="True" echo Install all at once : !installallatonce!
 )
 
-"!timeout_exe!" /t 30
+start "" /belownormal /b cmd /q /d /c "!timeout_exe! 30 /nobreak > nul"
+"!timeout_exe!" 30 & tasklist | find "timeout" >nul 
+if !ERRORLEVEL!==0 (
+	set pause_end=True
+	taskkill /f /im timeout.exe 2>nul >nul
+)
 
 :configurewu
 if not "!online!"=="True" goto getofflineinfo
@@ -444,6 +462,12 @@ echo.
 
 if not "!downloadonly!"=="True" (
 
+	if not exist "!dism_exe!" (
+		echo.
+		echo ERROR dism.exe not found
+		goto end
+	)
+	
 	if not exist "!install_wim!" (
 		echo.
 		echo ERROR couldn't find !install_wim!
@@ -572,6 +596,7 @@ if not !exitcode!==0 (
 
 :getenabledfeatures
 if "!downloadonly!"=="True" goto getjobs
+if not exist "!dism_exe!" goto getjobs
 
 echo|set /p=!TIME:~0,2!:!TIME:~3,2! Determinating enabled features... 
 set which=/Online
@@ -596,17 +621,19 @@ if "!force_install!"=="True" goto getjobs
 del /f /q "!dism_installedpackages!" >nul 2>&1
 del /f /q "!systeminfo_installedpackages!" >nul 2>&1
 
-echo|set /p=!TIME:~0,2!:!TIME:~3,2! Determinating installed KBs with dism... 
-set which=/Online
-if not "!online!"=="True" set which=/Image:"!mount!"
-"!dism_exe!" !which! /Get-Packages > "!dism_installedpackages!" /English 2>&1
-set exitcode=!ERRORLEVEL!
+if exist "!dism_exe!" (
+	echo|set /p=!TIME:~0,2!:!TIME:~3,2! Determinating installed KBs with dism... 
+	set which=/Online
+	if not "!online!"=="True" set which=/Image:"!mount!"
+	"!dism_exe!" !which! /Get-Packages > "!dism_installedpackages!" /English 2>&1
+	set exitcode=!ERRORLEVEL!
 
-if not !exitcode!==0 (
-	echo !exitcode!
-	echo.
-	echo ERROR determinating installed KBs with dism
-	goto end
+	if not !exitcode!==0 (
+		echo !exitcode!
+		echo.
+		echo ERROR determinating installed KBs with dism
+		goto end
+	)
 )
 
 set count=0
@@ -753,7 +780,9 @@ for /f "tokens=*" %%j in (!jobs!) do (
 				set kb=!filename!
 				set "kb=!kb:*-KB=!"
 				set "kb=KB!kb:~0,7!"
-		
+				echo !kb! | !find_exe! "-" >nul 2>&1
+				if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
+				
 				if "!force_downloadpatches!"=="True" del /f /q !filename! >nul 2>&1
 				
 				if exist "!filename!" (
@@ -826,6 +855,8 @@ for /f "tokens=*" %%j in (!jobs!) do (
 				set kb=!filename!
 				set "kb=!kb:*-KB=!"
 				set "kb=KB!kb:~0,7!"
+				echo !kb! | !find_exe! "-" >nul 2>&1
+				if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
 				
 				set install=True
 				if not "!force_install!"=="True" (
@@ -862,10 +893,10 @@ for /f "tokens=*" %%j in (!jobs!) do (
 					if "!online!"=="True" if "!online_dism!"=="True" (
 											
 						if "!dryrun!"=="True" (
-							echo !TIME:~0,2!:!TIME:~3,2! Would extract !kb! 
+							echo !TIME:~0,2!:!TIME:~3,2! !index_zeroes!/!count_zeroes! Would extract !kb! in work dir 
 						) else (		
 							
-							echo|set /p=!TIME:~0,2!:!TIME:~3,2! Extracting !kb!... 
+							echo|set /p=!TIME:~0,2!:!TIME:~3,2! !index_zeroes!/!count_zeroes! Extracting !kb! in work dir ... 
 							"!expand_exe!" -f:* "!patches_install!\!filename!" "!patches_install!" >nul 2>&1
 							set exitcode=!ERRORLEVEL!
 							echo !exitcode!
@@ -911,15 +942,22 @@ for /f "tokens=*" %%j in (!jobs!) do (
 					
 					if "!online_dism!"=="True" (		
 						
+						if not exist "!dism_exe!" (
+							set installedmsus=0
+							echo.
+							echo ERROR dism.exe not found
+							goto end
+						)
+						
 						if "!dryrun!"=="True" (
 							echo !TIME:~0,2!:!TIME:~3,2! Would install online ^(dism^)
 						) else (			
-										
+								
 							echo !TIME:~0,2!:!TIME:~3,2! - Installing online ^(dism^):
 							"!dism_exe!" /Online /Add-Package /PackagePath:"!patches_install!" /NoRestart /English
 							set exitcode=!ERRORLEVEL!
 							echo !exitcode!
-							if not !exitcode!==3010 if not !exitcode!==0 (
+							if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
 								set installedmsus=0		
 								echo.
 								echo ERROR installing online ^(dism^) 
@@ -949,6 +987,8 @@ for /f "tokens=*" %%j in (!jobs!) do (
 							set kb=!filename!
 							set "kb=!kb:*-KB=!"
 							set "kb=KB!kb:~0,7!"
+							echo !kb! | !find_exe! "-" >nul 2>&1
+							if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
 				
 							if "!dryrun!"=="True" (
 								echo !TIME:~0,2!:!TIME:~3,2! Would install online ^(wusa^) !kb!
@@ -959,7 +999,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 								set exitcode=!ERRORLEVEL!
 								echo !exitcode!
 								
-								if not !exitcode!==3010 if not !exitcode!==0 (
+								if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
 									if "!wusa_exitonERROR!"=="True" (
 										set installedmsus=0
 										echo.
@@ -978,6 +1018,13 @@ for /f "tokens=*" %%j in (!jobs!) do (
 					)		
 				) else (
 				
+					if not exist "!dism_exe!" (
+							set installedmsus=0
+							echo.
+							echo ERROR dism.exe not found
+							goto end
+					)
+						
 					if "!dryrun!"=="True" (
 						echo !TIME:~0,2!:!TIME:~3,2! Would install offline ^(dism^) !kb!
 					) else (
@@ -985,7 +1032,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 						"!dism_exe!" /Image:!mount! /Add-Package /Packagepath:"!patches_install!" /English
 						set exitcode=!ERRORLEVEL!
 						
-						if not !exitcode!==0 (
+						if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
 							set installedmsus=0
 							echo.
 							echo ERROR installing offline ^(dism^) 
@@ -999,6 +1046,9 @@ for /f "tokens=*" %%j in (!jobs!) do (
 		
 		)
 	)
+	
+	popd "!job_ap!"
+	popd "!patches_install!"
 	
 	"!timeout_exe!" /t 3 >nul 2>&1
 )
@@ -1015,14 +1065,23 @@ if "!installallatonce!"=="True" (
 
 	if "!foundfiles!"=="True" (
 		
-		echo.				
+		echo.
+		echo --------
 		echo !TIME:~0,2!:!TIME:~3,2! !install_method! ^(all at once^):
+		echo --------
 		echo.
 		
 		if "!online!"=="True" (
 			
 			if "!online_dism!"=="True" (		
 				
+				if not exist "!dism_exe!" (
+					set installedmsus=0
+					echo.
+					echo ERROR dism.exe not found
+					goto end
+				)
+					
 				if "!dryrun!"=="True" (
 					echo !TIME:~0,2!:!TIME:~3,2! Would install online all at once ^(dism^)
 				) else (			
@@ -1031,7 +1090,7 @@ if "!installallatonce!"=="True" (
 					"!dism_exe!" /Online /Add-Package /PackagePath:"!patches_install!" /NoRestart /English
 					set exitcode=!ERRORLEVEL!
 					echo !exitcode!
-					if not !exitcode!==3010 if not !exitcode!==0 (
+					if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
 						set installedmsus=0		
 						echo.
 						echo ERROR installing online all at once ^(dism^) 
@@ -1071,7 +1130,7 @@ if "!installallatonce!"=="True" (
 						set exitcode=!ERRORLEVEL!
 						echo !exitcode!
 						
-						if not !exitcode!==3010 if not !exitcode!==0 (
+						if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
 							if "!wusa_exitonERROR!"=="True" (
 								set installedmsus=0
 								echo.
@@ -1090,6 +1149,12 @@ if "!installallatonce!"=="True" (
 			)		
 		) else (
 		
+			if not exist "!dism_exe!" (
+				echo.
+				echo ERROR dism.exe not found
+				goto end
+			)
+				
 			if "!dryrun!"=="True" (
 				echo !TIME:~0,2!:!TIME:~3,2! Would install offline all at once ^(dism^) !kb!
 			) else (
@@ -1097,7 +1162,7 @@ if "!installallatonce!"=="True" (
 				"!dism_exe!" /Image:!mount! /Add-Package /Packagepath:"!patches_install!" /English
 				set exitcode=!ERRORLEVEL!
 				
-				if not !exitcode!==0 (
+				if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
 					set installedmsus=0
 					echo.
 					echo ERROR installing offline all at once ^(dism^) 
@@ -1106,9 +1171,13 @@ if "!installallatonce!"=="True" (
 			)
 		)		
 	) else (
-		echo.
-		echo ERROR found no files to install
-		goto end
+		
+		if not "!dryrun!"=="True" (
+			set installedmsus=0
+			echo.
+			echo ERROR found no files to install
+			goto end
+		)
 	)
 
 	popd "!patches_install!"
@@ -1118,6 +1187,13 @@ if "!installallatonce!"=="True" (
 :unmount
 if "!online!"=="True" goto end
 if "!dryrun!"=="True" goto end
+
+if not exist "!dism_exe!" (
+	echo.
+	echo ERROR dism.exe not found
+	goto end
+)
+			
 if !installedmsus!==0 (
 	echo.
 	echo ERROR it seems that no msu have been installed
@@ -1225,20 +1301,22 @@ if !ERRORLEVEL!==0 echo Killed remaining dism.exe processes
 REM taskkill /f /im powershell.exe >nul 2>&1
 REM if !ERRORLEVEL!==0 echo Killed remaining powershell.exe processes
 
-"!dism_exe!" /Get-MountedWimInfo | !find_exe! /i "!mount!" >nul 2>&1
-if !ERRORLEVEL!==0 (
-	echo|set /p=!TIME:~0,2!:!TIME:~3,2! Discarding and unmounting mount dir... 
-	"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
-	set returncode=!ERRORLEVEL!
-	echo !returncode!
-	
-	if not !returncode!==0 (
-		if not !exitcode!==3010 if not !exitcode!==0 set exitcode=!returncode! 
-		echo.
-		echo ERROR discarding and unmounting mount dir
+if exist "!dism_exe!" (
+	"!dism_exe!" /Get-MountedWimInfo | !find_exe! /i "!mount!" >nul 2>&1
+	if !ERRORLEVEL!==0 (
+		echo|set /p=!TIME:~0,2!:!TIME:~3,2! Discarding and unmounting mount dir... 
+		"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
+		set returncode=!ERRORLEVEL!
+		echo !returncode!
+		
+		if not !returncode!==0 (
+			if not !exitcode!==3010 if not !exitcode!==0 set exitcode=!returncode! 
+			echo.
+			echo ERROR discarding and unmounting mount dir
+		)
+		
+		"!timeout_exe!" /t 3 >nul 2>&1
 	)
-	
-	"!timeout_exe!" /t 3 >nul 2>&1
 )
 
 if exist "!work_dir!" (
@@ -1333,7 +1411,7 @@ if "!online!"=="True" (
 )
 
 echo.
-if not "!downloadonly!"=="True" echo !TIME:~0,2!:!TIME:~3,2! Installed !installedmsus! MSUs
+if not "!dryrun!"=="True" if not "!downloadonly!"=="True" echo !TIME:~0,2!:!TIME:~3,2! Installed !installedmsus! MSUs
 echo !TIME:~0,2!:!TIME:~3,2! Exitcode - !exitcode!
 
 if "!pause_end!"=="True" pause
