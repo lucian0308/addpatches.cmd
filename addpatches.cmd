@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 REM COMMON SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=False
+set dryrun=True
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
@@ -43,7 +43,7 @@ REM If True, all patches in the links.txt will be redownloaded
 set force_downloadpatches=False
 
 REM If True and !downloadpatches!=True the script will only download the patches
-set downloadonly=True
+set downloadonly=False
 
 REM Uncomment to force a specific arch, product type and version
 REM Useful in combination with !downloadonly! to download for a foreign system
@@ -58,10 +58,10 @@ REM set force_arch=x64
 REM set force_producttype=Desktop
 REM set force_version=6.1.7601
 
-set force_name=Windows Server 2008 R2
-set force_arch=x64
-set force_producttype=Server
-set force_version=6.1.7601
+REM set force_name=Windows Server 2008 R2
+REM set force_arch=x64
+REM set force_producttype=Server
+REM set force_version=6.1.7601
 
 REM set force_name=Windows 8.1
 REM set force_arch=x64
