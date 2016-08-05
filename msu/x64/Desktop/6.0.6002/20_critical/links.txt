@@ -1,0 +1,6 @@
+http://download.windowsupdate.com/d/msdownload/update/software/crup/2014/02/windows6.0-kb2929733-x64_0f2aa9612c3ed89c176800c8261fa5f2dba5d76b.msu
+http://download.windowsupdate.com/msdownload/update/software/crup/2010/02/windows6.0-kb973917-v2-x64_81da59cd9ec8070e4911e9cba8b51af1d15c62db.msu
+http://download.windowsupdate.com/msdownload/update/software/crup/2011/03/windows6.0-kb2506014-x64_e4a62be05adf6d07841dd3df49fb5d63d1d3ba05.msu
+http://download.windowsupdate.com/msdownload/update/software/crup/2012/06/windows6.0-kb2718704-x64_5cb92cc1bd1604c76984fd803acae314a58d3473.msu
+http://download.windowsupdate.com/msdownload/update/software/crup/2012/12/windows6.0-kb2748349-x64_43a51b774ebac5bf7598baf73183e54848c26e79.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/01/windows6.0-kb971029-x64_5b76c32564939b9f1b290b863ba899b3b45661cc.msu
