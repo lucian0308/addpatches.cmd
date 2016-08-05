@@ -300,6 +300,9 @@ if not "!downloadonly!"=="True" (
 start "" /belownormal /b cmd /q /d /c "!timeout_exe! 30 /nobreak > nul"
 "!timeout_exe!" 30 & tasklist | find "timeout" >nul 
 if !ERRORLEVEL!==0 (
+	echo.
+	echo !TIME:~0,2!:!TIME:~3,2! Timeout interrupted, will pause at end
+	
 	set pause_end=True
 	taskkill /f /im timeout.exe 2>nul >nul
 )
@@ -596,7 +599,7 @@ if not !exitcode!==0 (
 
 :getenabledfeatures
 if "!downloadonly!"=="True" goto getjobs
-if not exist "!dism_exe!" goto getjobs
+if not exist "!dism_exe!" goto getinstalledpatches
 
 echo|set /p=!TIME:~0,2!:!TIME:~3,2! Determinating enabled features... 
 set which=/Online
@@ -634,11 +637,12 @@ if exist "!dism_exe!" (
 		echo ERROR determinating installed KBs with dism
 		goto end
 	)
+	
+	set count=0
+	for /f %%c in ('type "!dism_installedpackages!" ^| !find_exe! /i /c "kb"') do set count=%%c
+	echo found !count! KBs
+	
 )
-
-set count=0
-for /f %%c in ('type "!dism_installedpackages!" ^| !find_exe! /i /c "kb"') do set count=%%c
-echo found !count! KBs
 
 if "!online!"=="True" (
 
@@ -1120,7 +1124,9 @@ if "!installallatonce!"=="True" (
 					set kb=!filename!
 					set "kb=!kb:*-KB=!"
 					set "kb=KB!kb:~0,7!"
-		
+					echo !kb! | !find_exe! "-" >nul 2>&1
+					if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
+					
 					if "!dryrun!"=="True" (
 						echo !TIME:~0,2!:!TIME:~3,2! Would install online all at once ^(wusa^) !kb!
 					) else (
