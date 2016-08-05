@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 REM COMMON SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=True
+set dryrun=False
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
@@ -42,7 +42,7 @@ set downloadpatches=True
 REM If True, all patches in the links.txt will be redownloaded
 set force_downloadpatches=False
 
-REM If True and !downloadpatches!=True the script will only download the patches
+REM If True will set !downloadpatches! to True and the script will only download the patches
 set downloadonly=False
 
 REM Uncomment to force a specific arch, product type and version
@@ -128,14 +128,6 @@ set isooutput_dir=%~dp0
 
 REM OFFLINE SETTINGS END
 
-
-net session >nul 2>&1
-if not %ERRORLEVEL% == 0 (
-	echo.
-	echo ERROR this command prompt is not elevated
-	goto end
-)
-
 set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%SYSTEMROOT%\System32\dism.exe
@@ -147,12 +139,11 @@ set osdcimg_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Ki
 if not exist "!osdcimg_exe!" set osdcimg_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\Oscdimg\oscdimg.exe
 
 set timeout_exe=%SYSTEMROOT%\System32\timeout.exe
-
+set cscript_exe=%SYSTEMROOT%\System32\cscript.exe
 set find_exe=%SYSTEMROOT%\System32\find.exe
 set wmic_exe=%SYSTEMROOT%\System32\wbem\WMIC.exe
 
 set systeminfo_exe=%SYSTEMROOT%\System32\systeminfo.exe
-set bitsadmin_exe=%SYSTEMROOT%\System32\bitsadmin.exe
 set expand_exe=%SYSTEMROOT%\System32\expand.exe
 
 set wusa_exe=%SYSTEMROOT%\SysNative\wusa.exe
@@ -167,6 +158,8 @@ set version=?
 
 set wiminfo=!work_dir!\wiminfo.txt
 set mount=!work_dir!\mount
+
+set temp_download_vbs=!work_dir!\download.vbs
 
 set temp_install_wim=!install_wim!
 set temp_install_wim_index=!install_wim_index!
@@ -187,46 +180,13 @@ set wu_reg_savedvalue=?
 
 set exitcode=0
 
+
 net session >nul 2>&1
-if not !ERRORLEVEL!==0 (
-	echo ERROR - this command prompt is not elevated
+if not %ERRORLEVEL% == 0 (
+	echo.
+	echo ERROR this command prompt is not elevated
 	goto end
 )
-
-
-:deleteold
-
-if exist "!dism_exe!" (
-	"!dism_exe!" /Get-MountedWimInfo | !find_exe! /i "!mount!" >nul 2>&1
-	if !ERRORLEVEL!==0 (
-		echo|set /p=!TIME:~0,2!:!TIME:~3,2! Discarding and unmounting old mount dir... 
-		"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
-		set exitcode=!ERRORLEVEL!
-		echo !exitcode!
-		
-		if not !exitcode!==0 (
-			echo.
-			echo ERROR discarding and unmounting old mount dir
-			goto end
-		)
-	)
-)
-
-if exist "!work_dir!" (
-	echo|set /p=!TIME:~0,2!:!TIME:~3,2! Deleting old work dir ... 
-	rmdir /s /q "!work_dir!" >nul 2>&1
-	set exitcode=!ERRORLEVEL!
-	if not exist "!work_dir!" set exitcode=0
-	echo !exitcode!
-	
-	if not !exitcode!==0 (
-		echo.
-		echo ERROR deleting old work dir
-		goto end
-	)
-)
-
-md "!work_dir!" >nul 2>&1
 
 :info
 
@@ -252,7 +212,7 @@ if "!downloadonly!"=="True" (
 			echo Install method      : dism
 		) else (
 			echo Install method      : wusa
-			echo Exit on ERROR       : !wusa_exitonERROR!
+			echo Exit on wusa error  : !wusa_exitonERROR!
 		)
 		
 		echo.
@@ -306,6 +266,43 @@ if !ERRORLEVEL!==0 (
 	set pause_end=True
 	taskkill /f /im timeout.exe 2>nul >nul
 )
+
+
+:deleteold
+
+echo.
+
+if exist "!dism_exe!" (
+	"!dism_exe!" /Get-MountedWimInfo | !find_exe! /i "!mount!" >nul 2>&1
+	if !ERRORLEVEL!==0 (
+		echo|set /p=!TIME:~0,2!:!TIME:~3,2! Discarding and unmounting old mount dir... 
+		"!dism_exe!" /Unmount-Wim /MountDir:"!mount!" /Discard /English >nul 2>&1
+		set exitcode=!ERRORLEVEL!
+		echo !exitcode!
+		
+		if not !exitcode!==0 (
+			echo.
+			echo ERROR discarding and unmounting old mount dir
+			goto end
+		)
+	)
+)
+
+if exist "!work_dir!" (
+	echo|set /p=!TIME:~0,2!:!TIME:~3,2! Deleting old work dir ... 
+	rmdir /s /q "!work_dir!" >nul 2>&1
+	set exitcode=!ERRORLEVEL!
+	if not exist "!work_dir!" set exitcode=0
+	echo !exitcode!
+	
+	if not !exitcode!==0 (
+		echo.
+		echo ERROR deleting old work dir
+		goto end
+	)
+)
+
+md "!work_dir!" >nul 2>&1
 
 :configurewu
 if not "!online!"=="True" goto getofflineinfo
@@ -717,11 +714,27 @@ if not exist "!jobs!" (
 
 if "!downloadpatches!"=="True" (
 	
-	if not exist "!bitsadmin_exe!" (
-		echo.
-		echo ERROR bitsadmin.exe not found
-		goto end
-	)
+	REM reg query "HKCU\Software\Microsoft\Windows Script Host\Settings" /v "Enabled" 2>nul | find "0x0" >nul 2>&1
+	REM set returncode=!ERRORLEVEL!
+	REM if !returncode!==1 reg query "HKLM\SOFTWARE\Microsoft\Windows Script Host\Settings" /v "Enabled" 2>nul | find "0x0" >nul 2>&1
+	REM set returncode=!ERRORLEVEL!
+	
+	REM if not !returncode!==1 (
+	REM 	echo.
+	REM 	echo ERROR cscript.exe needed for downloading, but it seems to be not allowed on your system
+	REM 	goto end
+	REM )
+	
+	echo Set objHTTP = CreateObject^("WinHttp.WinHttpRequest.5.1"^) > "!temp_download_vbs!"
+	echo Set objStream = CreateObject^("ADODB.Stream"^) >> "!temp_download_vbs!"
+	echo objHTTP.Open "GET", WScript.Arguments^(0^), False >> "!temp_download_vbs!"
+	echo objHTTP.Send >> "!temp_download_vbs!"
+	echo If Not ^(objHTTP.Status = 200^) Then Wscript.Quit objHTTP.Status >> "!temp_download_vbs!"
+	echo objStream.Open >> "!temp_download_vbs!"
+	echo objStream.Type = 1 >> "!temp_download_vbs!"
+	echo objStream.Write objHTTP.ResponseBody >> "!temp_download_vbs!"
+	echo objStream.SaveToFile WScript.Arguments^(1^), 2 >> "!temp_download_vbs!"
+	echo objStream.Close >> "!temp_download_vbs!"
 
 	ping -n 1 google.com 2>&1 | !find_exe! "TTL" >nul 2>&1
 	if not !ERRORLEVEL!==0 (
@@ -781,11 +794,12 @@ for /f "tokens=*" %%j in (!jobs!) do (
 				set url=%%l
 				set filename=%%~nxl
 	
-				set kb=!filename!
-				set "kb=!kb:*-KB=!"
-				set "kb=KB!kb:~0,7!"
-				echo !kb! | !find_exe! "-" >nul 2>&1
-				if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
+				set kb=?
+				set "nb=!filename:*-KB=!"
+				set "nb=!nb:~0,7!"
+				echo !nb! | !find_exe! "-" >nul 2>&1
+				if !ERRORLEVEL!==0 set "nb=!nb:~0,6! "
+				set "kb=KB!nb!"
 				
 				if "!force_downloadpatches!"=="True" del /f /q !filename! >nul 2>&1
 				
@@ -793,28 +807,27 @@ for /f "tokens=*" %%j in (!jobs!) do (
 					if "!dryrun!"=="False" if "!log_found!"=="True" echo !TIME:~0,2!:!TIME:~3,2! !index_zeroes!/!count_zeroes! !kb! seems to be already downloaded
 				) else (
 				
-					set job_number=%RANDOM%
-					set temp_file=%TEMP%\!filename!_!job_number!
+					set temp_file=%TEMP%\!filename!_%RANDOM%
 					
 					if "!dryrun!"=="True" (
 						echo !TIME:~0,2!:!TIME:~3,2! !index_zeroes!/!count_zeroes! Would download !kb! 
 					) else (
 						echo|set /p=!TIME:~0,2!:!TIME:~3,2! !index_zeroes!/!count_zeroes! Downloading !kb!... 
-						"!bitsadmin_exe!" /Transfer "bitsjob_!job_number!" "!url!" "!temp_file!" >nul 2>&1
+						"!cscript_exe!" /Nologo "!temp_download_vbs!" "!url!" "!temp_file!"
 						set exitcode=!ERRORLEVEL!
 						echo !exitcode!
 						
 						if not !exitcode!==0 (
 							echo.
 							echo ERROR downlading !kb!
-							del /f /q "%TEMP%\!filename!" >nul 2>&1
+							del /f /q "!temp_file!" >nul 2>&1
 							goto end
 						)
 						
 						copy "!temp_file!" "!filename!" >nul 2>&1
 						set exitcode=!ERRORLEVEL!
 						
-						del /f /q "%TEMP%\!filename!" >nul 2>&1
+						del /f /q "!temp_file!" >nul 2>&1
 
 						if not !exitcode!==0 (
 							echo.
@@ -856,11 +869,12 @@ for /f "tokens=*" %%j in (!jobs!) do (
 				
 				set filename=%%f
 				
-				set kb=!filename!
-				set "kb=!kb:*-KB=!"
-				set "kb=KB!kb:~0,7!"
-				echo !kb! | !find_exe! "-" >nul 2>&1
-				if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
+				set kb=?
+				set "nb=!filename:*-KB=!"
+				set "nb=!nb:~0,7!"
+				echo !nb! | !find_exe! "-" >nul 2>&1
+				if !ERRORLEVEL!==0 set "nb=!nb:~0,6! "
+				set "kb=KB!nb!"
 				
 				set install=True
 				if not "!force_install!"=="True" (
@@ -988,11 +1002,12 @@ for /f "tokens=*" %%j in (!jobs!) do (
 				
 							set filename=%%f
 							
-							set kb=!filename!
-							set "kb=!kb:*-KB=!"
-							set "kb=KB!kb:~0,7!"
-							echo !kb! | !find_exe! "-" >nul 2>&1
-							if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
+							set kb=?
+							set "nb=!filename:*-KB=!"
+							set "nb=!nb:~0,7!"
+							echo !nb! | !find_exe! "-" >nul 2>&1
+							if !ERRORLEVEL!==0 set "nb=!nb:~0,6! "
+							set "kb=KB!nb!"
 				
 							if "!dryrun!"=="True" (
 								echo !TIME:~0,2!:!TIME:~3,2! Would install online ^(wusa^) !kb!
@@ -1004,7 +1019,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 								echo !exitcode!
 								
 								if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
-									if "!wusa_exitonERROR!"=="True" (
+									if "!wusa_exitonerror!"=="True" (
 										set installedmsus=0
 										echo.
 										echo ERROR installing online ^(wusa^) !kb!
@@ -1121,11 +1136,12 @@ if "!installallatonce!"=="True" (
 		
 					set filename=%%f
 					
-					set kb=!filename!
-					set "kb=!kb:*-KB=!"
-					set "kb=KB!kb:~0,7!"
-					echo !kb! | !find_exe! "-" >nul 2>&1
-					if !ERRORLEVEL!==0 set "kb=KB!kb:~0,6! "
+					set kb=?
+					set "nb=!filename:*-KB=!"
+					set "nb=!nb:~0,7!"
+					echo !nb! | !find_exe! "-" >nul 2>&1
+					if !ERRORLEVEL!==0 set "nb=!nb:~0,6! "
+					set "kb=KB!nb!"
 					
 					if "!dryrun!"=="True" (
 						echo !TIME:~0,2!:!TIME:~3,2! Would install online all at once ^(wusa^) !kb!
@@ -1137,7 +1153,7 @@ if "!installallatonce!"=="True" (
 						echo !exitcode!
 						
 						if not !exitcode!==0 if not !exitcode!==3010 if not !exitcode!==2359302 (
-							if "!wusa_exitonERROR!"=="True" (
+							if "!wusa_exitonerror!"=="True" (
 								set installedmsus=0
 								echo.
 								echo ERROR installing online all at once ^(wusa^) !kb!
