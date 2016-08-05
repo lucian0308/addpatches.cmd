@@ -1,0 +1,5 @@
+https://download.microsoft.com/download/3/3/F/33FFD46F-ED25-49FE-B89F-EC6269568F9B/Windows6.1-KB3164033-x64.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/06/windows6.0-kb3168965-x64_4d6af938468d6165c214a26cc6b5a5cee23c6017.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/04/windows6.0-kb3145739-x64_918212eb27224cf312f865e159f172a4b8a75b76.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows6.0-kb3109094-x64_7c7fb9690a32483e79d600b6886e5bfc4d3fe71c.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows6.0-kb3109094-x64_7c7fb9690a32483e79d600b6886e5bfc4d3fe71c.msu
