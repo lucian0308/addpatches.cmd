@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 REM COMMON SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=False
+set dryrun=True
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
@@ -454,9 +454,9 @@ if not "!force_version!"=="" (
 )
 
 if "!downloadonly!"=="True" goto getjobs
-goto getenabledfeatures
 
 :getofflineinfo
+if "!online!"=="True" goto getenabledfeatures
 
 echo.
 
@@ -1345,6 +1345,11 @@ if exist "!work_dir!" (
 	echo|set /p=!TIME:~0,2!:!TIME:~3,2! Deleting work dir ... 
 	rmdir /s /q "!work_dir!" >nul 2>&1
 	set returncode=!ERRORLEVEL!
+	if exist "!work_dir!" (
+		timeout /t 3 >nul 2>&1
+		rmdir /s /q "!work_dir!" >nul 2>&1
+		set returncode=!ERRORLEVEL!
+	)
 	if not exist "!work_dir!" set returncode=0
 	echo !returncode!
 	
