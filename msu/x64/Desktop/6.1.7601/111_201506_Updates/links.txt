@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/05/windows6.1-kb3054476-x64_19c4868fc6d05cc865490a9caf4ded6cb777750d.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows6.1-kb3068708-x64_1ce8daca73621d47367242d57f4a9fd702d31df9.msu

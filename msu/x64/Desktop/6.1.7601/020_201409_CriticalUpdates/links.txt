@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/msdownload/update/software/crup/2011/06/windows6.1-kb2552343-x64_a099df53b7dfafc6e88b59c555f21377b7e07478.msu
+http://download.windowsupdate.com/msdownload/update/software/crup/2012/06/windows6.1-kb2718704-x64_db9ff01fb3f614e9cb480b68b1bf998c3442b13e.msu
+http://download.windowsupdate.com/msdownload/update/software/crup/2011/03/windows6.1-kb2506014-x64_cc70f2accbfbae5e68f3c7aa3dba8877d1dc88a7.msu

@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/08/windows6.1-kb3092627-x64_f298b163520bae56e8b0770f24f1c140709877c6.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/08/windows6.1-kb3078667-x64_7cbc9f4467945130fffbdb5aee4daf7e15f78ba7.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/08/windows6.1-kb3080149-x64_f25965cefd63a0188b1b6f4aad476a6bd28b68ce.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/09/windows6.1-kb3080079-x64_2cb24acbc7ecbad33d452fdb00a57343e90dc3e5.msu

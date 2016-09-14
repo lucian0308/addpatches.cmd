@@ -1,0 +1,15 @@
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/02/windows6.1-kb2640148-v2-x64_32f195699b401df56e4c0562757308e9b1909a3a.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/11/windows6.1-kb2685813-x64_22a969bada171678b0936bb320e6a7778e8adc07.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/10/windows6.1-kb2603229-x64_aea29b57253c8f271d99b76f09839dbf1c0a7f86.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/06/windows6.1-kb2547666-x64_28b78926b1b1a04a9867050ecb5e81857ebd5d66.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2013/01/windows6.1-kb2726535-x64_83391325fdd6c9f32c28b5bf947fd7364804b473.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/04/windows6.1-kb2506928-v2-x64_54e2c3d6b32d9ec399c2c4ace6f19018690156bd.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/02/windows6.1-kb2660075-x64_5722b20af2ebb81da4661a350e21d005e2d2b09b.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2729094-v2-x64_e1a3ecc5030a51711f558f90dd1db52e24ce074b.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/06/windows6.1-kb2545698-x64_51753a436cc6358b6e3e15db9b43ffc97d523fc9.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2013/01/windows6.1-kb2773072-x64_8fb31aa027962522048bfd1d65398561f5232ce7.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/08/windows6.1-kb2563227-x64_3db1a7c4ee22e5d7e9a83b148ad6363a64d7c0f4.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/11/windows6.1-kb2761217-x64_50d02b8fe1321e36a33545d7350730ced229d15a.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2013/04/windows6.1-kb2799926-x64_c26efbd4cd1eee10a12e3300b46a84803bbc6d8d.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2014/09/windows6.1-kb2985461-x64_377946b607f38477479b8e16517f3cf63243d97e.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/11/windows6.1-kb2685811-x64_191e09df632b70fd4f4b27d4cb9227f7c5a1c98c.msu
