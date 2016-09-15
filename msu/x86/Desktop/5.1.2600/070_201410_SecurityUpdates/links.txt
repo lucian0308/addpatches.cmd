@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/09/windowsxp-kb2993254-x86-embedded-express-deu_59eaad86936b2bc76087f968f0b5d7c6ff8e8d36.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/09/windowsxp-kb2998579-x86-embedded-deu_31be7198c1f5d83302f8b005da9fa6a3c8fe84f5.exe

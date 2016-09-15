@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/07/windowsxp-kb2850869-x86-express-deu_67bb4c62f60868ee92392968501104f7dfe3bffc.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/07/windowsxp-kb2859537-x86-express-deu_ff3d5689f09e4e99f1450894a42e1f2b960c621c.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/08/windowsxp-windowsmedia-kb2803821-v2-x86-deu_e9311b2f0794b4df6d619df9b279830dbb1299bc.exe

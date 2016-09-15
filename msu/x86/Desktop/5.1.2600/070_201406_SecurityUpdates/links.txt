@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/05/windowsxp-kb2957503-x86-embedded-deu_6a47e96c8b468dade7ceaf2c60c704321296b59f.exe
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/05/windowsxp-kb2957509-x86-embedded-express-deu_024f9e0f3dab4a0e4a5eb9449b6c44c72ede8b10.cab

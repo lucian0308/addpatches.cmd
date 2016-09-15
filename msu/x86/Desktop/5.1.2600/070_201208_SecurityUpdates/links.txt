@@ -1,0 +1,5 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/05/windowsxp-kb2686509-x86-deu_a4f62ec099274bfdf9d111a0ee65c32cb06ee9f2.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/06/windowsxp-kb2691442-x86-express-deu_5c97eaa30018c9d6a7ae024d94ca850e055e5e1e.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/06/windowsxp-kb2655992-x86-express-deu_40736be4b3e07924a143bec2fbae1c6e7e50c348.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/06/windowsxp-kb2719985-x86-express-deu_1355e7184292410cab4ed0505aff4080179a516a.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/06/windowsxp-kb2698365-x86-deu_ba2932468abf61140209cd9b830ee82c0863876d.exe

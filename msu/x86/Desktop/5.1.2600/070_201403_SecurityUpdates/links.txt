@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/02/windowsxp-kb2929961-x86-express-deu_8c70e4afd961ae55e94d0b81303b8031a3be3ef8.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/02/windowsxp-kb2930275-x86-express-deu_86368d2c344cdcb8d1c1640a38fc765b5fcb613f.cab

@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/08/windowsxp-kb2876217-x86-express-deu_08a40c6e5448ce9802692850591cfce7f9af19eb.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/08/windowsxp-kb2864063-x86-express-deu_7ad6379766203f09f30b410a0119f1fddd1d6cb0.cab

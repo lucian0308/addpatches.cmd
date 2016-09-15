@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/03/windowsxp-kb956572-x86-deu_99122b3a29b7455624721aaca0c8c4241e78d2ab.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2008/11/windowsxp-kb952004-x86-express-deu_67b8184f6d5f319c77b7f04b72d8228cd894b38b.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/03/windowsxp-kb960803-x86-express-deu_c291aa45b60cfde80c79afaf564bc1c34e200744.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/03/windowsxp-kb959426-x86-express-deu_a1f7b8852d4f3d8c9ef1cff7da078357232ea882.cab

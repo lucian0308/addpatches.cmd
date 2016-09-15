@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/01/windowsxp-kb975713-x86-express-deu_5e085a30a6c12ce4579cfc78bb6496bf46e63522.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/01/windowsxp-kb975560-x86-express-deu_0ae26728a59803adf02e4f019662b52518d66c5d.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/01/windowsxp-kb977914-x86-express-deu_112c3021c532b92533bd02c6e46a5483027ec8f9.cab

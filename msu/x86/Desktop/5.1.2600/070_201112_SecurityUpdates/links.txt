@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/11/windowsxp-kb2619339-x86-express-deu_aa3a147bfee7166b2d1c3ddf2ba4bf34f0b7cb30.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/11/windowsxp-kb2620712-x86-express-deu_e4bf48166080fadb6d8dab00b256c272369566ad.cab

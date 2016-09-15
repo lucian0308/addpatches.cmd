@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/07/windowsxp-kb2115168-x86-express-deu_a180bb08f2b335ab6e64d5c11938f7e9deb22971.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/07/windowsxp-kb982665-x86-express-deu_1137be43ca8a270ec35cd597a0cc915cc0523f08.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/07/windowsxp-kb981997-x86-deu_eda4bb238e0c1f715f1577539b5b74c1fb741bb5.exe

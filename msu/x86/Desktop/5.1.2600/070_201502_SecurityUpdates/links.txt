@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windowsxp-kb3004361-x86-embedded-express-deu_670c68d194caada10e57fded33e98998e95eab83.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/01/windowsxp-kb3029944-x86-embedded-deu_ee007a29d1d6fa59d6862ab02c56d41a34bb739e.exe

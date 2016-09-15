@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windowsxp-kb2508429-x86-express-deu_bfdb66bdf15139a16110339733857293cd9c58bd.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windowsxp-kb2506212-x86-express-deu_a749bcca10c67be234745cf47ebe52ff1ec80bda.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windowsxp-kb2510581-x86-express-deu_14e7542c0faee2f24bd895c3c81a6c3f69c46a9b.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windowsxp-kb2509553-x86-express-deu_39388e4963556b594a00b8b252ccdf92d843fcab.cab

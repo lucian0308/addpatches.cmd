@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/11/windowsxp-kb2423089-x86-deu_913718d290c409cfe20abe06ecbbea2cb0709680.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/11/windowsxp-kb2443105-x86-express-deu_71075b7363f20d95ad0cc8f2cb74815c24595f7d.cab

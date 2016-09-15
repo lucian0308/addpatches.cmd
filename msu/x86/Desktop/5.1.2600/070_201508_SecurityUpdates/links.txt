@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windowsxp-kb3076895-x86-embedded-express-deu_51bbafa48bf63aa1095d8d0bf8c809d471f0a36b.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/07/windowsxp-kb3078601-x86-embedded-deu_62688e57781f27b87278c89e7c29f433b9979954.exe

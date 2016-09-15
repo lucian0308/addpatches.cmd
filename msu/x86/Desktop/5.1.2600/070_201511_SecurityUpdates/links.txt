@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/10/windowsxp-kb3081320-x86-embedded-express-deu_4401662d4ff25884d31ab163af7e9e0d70cb39d6.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/10/windowsxp-kb3092601-x86-embedded-deu_5a9965419415d9ab9d0ee67c4fc57dea350ed2e4.exe

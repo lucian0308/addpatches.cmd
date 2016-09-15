@@ -1,0 +1,3 @@
+http://www.download.windowsupdate.com/msdownload/update/software/secu/2008/05/windowsxp-kb946648-x86-deu_2415eede56fe688aae38f149eb8b0cb8ab9fe6da.exe
+http://www.download.windowsupdate.com/msdownload/update/software/secu/2008/07/windowsxp-kb952954-x86-express-deu_7e1d3abc4f435554cd755bdb91ccd763e92758b7.cab
+http://www.download.windowsupdate.com/msdownload/update/software/secu/2008/07/windowsxp-kb950974-x86-express-deu_7204787b39d748408db72b61fae39f0471adcaa0.cab

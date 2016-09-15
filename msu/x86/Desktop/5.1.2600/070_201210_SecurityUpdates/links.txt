@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/09/windowsxp-kb2723135-v2-x86-deu_d845674dff261cf38eb33742d2627d6b0019c329.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/09/windowsxp-kb2705219-v2-x86-express-deu_a02f88f3e711e990f91bd6026aea3f29dd9584b1.cab

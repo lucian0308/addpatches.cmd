@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2013/11/windowsxp-kb2900986-x86-deu_9429ffa1be5ad2b9d6008779065316de523967ad.exe
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/10/windowsxp-kb2876331-x86-express-deu_63bb03f93ea983ef9695f3a1e8f7e8c648e8b9aa.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2013/10/windowsxp-kb2868626-x86-express-deu_e3b7afee5ec781d5133071524a60662ff4ce7585.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2013/10/windowsxp-kb2862152-x86-express-deu_3a3c7daa16ef6a0cf85fbcbc7a53f37444d6dca2.cab

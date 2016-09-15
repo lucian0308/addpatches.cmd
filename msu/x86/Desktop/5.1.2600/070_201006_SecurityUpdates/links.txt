@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/05/windowsxp-windowsmedia-kb978695-x86-deu_087108b470354b3d1f4bbf6d8983e38c1f1fb0bf.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/05/windowsxp-kb979482-x86-express-deu_d99f0e1aa9c224f34b5d8d037ad44aef8e10d640.cab

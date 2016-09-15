@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/02/windowsxp-kb2479943-x86-express-deu_38394ded7ab85363e47e2d78039c72bc7fc56c9f.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/02/windowsxp-kb2481109-x86-express-deu_3005cc8520597903218828337126f84b00c35cd2.cab

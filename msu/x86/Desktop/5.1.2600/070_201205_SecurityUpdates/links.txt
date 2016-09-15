@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/04/windowsxp-kb2676562-x86-express-deu_b72ec9d95f6fffdad52406473fcb54b2204264fe.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/03/windowsxp-kb2659262-x86-deu_c14b5d8a99bbd688012f0e6ec9c52e6d31ad2f08.exe

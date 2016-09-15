@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/09/windowsxp-kb2847311-x86-express-deu_d589b72ee945d6db333eb9f20ce1b23e158b47ba.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/09/windowsxp-kb2862330-x86-deu_0392603ebd5b4a4d6b9d8316848d2a1ac02c9fa9.exe
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/09/windowsxp-kb2862335-x86-deu_66f0e30bf64ec53f06cbb2ed50b3432c6ab883d8.exe
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/09/windowsxp-kb2879017-x86-express-deu_e39cb2e59d6cbfdc10b92932f32217c673bb665b.cab

@@ -1,0 +1,6 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/07/windowsxp-windowsmedia-kb973540-x86-deu_f2e2cb9b65fc6cc20a0b466b5a677f4341ed1b97.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/07/windowsxp-kb973869-x86-deu_c7a9d1b53f1631078b3c162af045b7dd94dddd44.exe
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/07/windowsxp-kb973507-x86-express-deu_fed0a0f7e1c02c4a9c968489ab190ac1b1c24ee9.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/07/windowsxp-kb960859-x86-express-deu_b0112673941269d6868b29f84a4919ed36c1e04b.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/08/windowsxp-kb973815-x86-express-deu_a898ac505c36b9b8910fff00052bcfa779f763d0.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/07/windowsxp-kb971657-x86-express-deu_35e2457710acb551f0fde66dbc02fce22cf4119a.cab

@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/08/windows-kb890830-v5.39_1b2084eb641b136abcd3d438fda7ac6bdd145486.exe
+http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/07/windowsxp-kb3177723-x86-embedded-deu_ce45711e4ac64b46371bb4ce85ec4e9d9369beba.exe

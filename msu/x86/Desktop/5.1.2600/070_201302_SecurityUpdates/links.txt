@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2013/01/windowsxp-kb2802968-x86-express-deu_07bb1b62bbf857da14c5ba5db6962ae60fde8b5a.cab
+http://download.windowsupdate.com/msdownload/update/software/secu/2013/01/windowsxp-kb2780091-x86-express-deu_a54da67a19fa0a7f9e135f8c121f3dd490629a39.cab

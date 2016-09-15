@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windowsxp-kb3164035-x86-embedded-express-deu_cde4356265d92704cf16f131d56a359ed31a356a.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windowsxp-kb3161561-x86-embedded-express-deu_5106626047be11ade44e4eda780fef9c9ac6eb59.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/05/windowsxp-kb3161949-x86-embedded-express-deu_d314f55f8a518d4a6a341b9553268d3cddd04346.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windowsxp-kb3164033-x86-embedded-express-deu_08e1d020b90916a667cc96c4ec715d338d48357e.cab

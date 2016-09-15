@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windowsxp-kb3175024-x86-embedded-express-deu_13eb0e670e000912598a07442c8e169c6a84d9f1.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windowsxp-kb3177186-x86-embedded-express-deu_fe803595d7e5a9fcff4a7190ea406e05030ba0a8.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windowsxp-kb3184122-x86-embedded-express-deu_08ec236040b5f786a8a1e127e33dd586d9167d7b.cab
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windowsxp-kb3185911-x86-embedded-express-deu_068029bc21f8ed2f7418fc60165b124bbb000ba1.cab

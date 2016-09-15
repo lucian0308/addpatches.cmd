@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windowsxp-kb3109560-x86-embedded-express-deu_5f9ea9696df4dd42068a6f70c72850d638658153.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windowsxp-kb3121918-x86-embedded-express-deu_5fc2a0c297d1437122d6085abe90d2275a4f94ba.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windowsxp-kb3124624-x86-embedded-express-deu_11800721a618e5ee62fcce4f16ea8c976987929a.cab
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windowsxp-kb3124275-x86-embedded-express-deu_e8aab805e0c420d8bc8f564bd773d26c4d9b3e52.cab
