@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/02/windows6.0-kb968930-x64_4de013d593181a2a04217ce3b0e7536ab56995aa.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2011/04/windows6.0-kb2492386-x64_bc36732b774c4df455d4b94e1cc4c8c41222854b.msu

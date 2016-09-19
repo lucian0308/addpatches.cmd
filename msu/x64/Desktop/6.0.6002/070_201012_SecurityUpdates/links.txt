@@ -1,0 +1,7 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/11/windows6.0-kb2305420-x64_ec254bd36fae918ec5f09316bc2a29ee803ef735.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/11/windows6.0-kb2423089-x64_d887f9dbf898a028b8eccbafaee131208d80040a.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/11/windows6.0-kb979688-v3-x64_f4ad2ca166a99115303cd5d283e1e6e4bc046a40.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/09/windows6.0-kb2281679-x64_c829da7c3773918e7f3a6f80c7410a7742b5159b.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/09/windows6.0-kb2387149-x64_c86e33827c11b6756778c464cffb659fd2f89a1e.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/09/windows6.0-kb979687-x64_f2418d6d9a2b6e35dc4374bb2e933acd2b0f9c30.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/09/windows6.0-kb982132-x64_f35076fc79a123d8421b3617317899561f95ab67.msu

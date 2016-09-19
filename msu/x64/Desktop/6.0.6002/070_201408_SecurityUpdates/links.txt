@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/07/windows6.0-kb2937608-x64_2b64c687f8a0dbda4ba45652848697594e0db089.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/08/windows6.0-kb2993651-x64_59f68ba024238cb62307b4ac3f0ed4a4883737dd.msu

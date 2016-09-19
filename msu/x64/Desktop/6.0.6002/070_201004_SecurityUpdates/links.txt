@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/03/windows6.0-kb977816-x64_4732d555a014b88688d363ac9663ea6fa705bcff.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/03/windows6.0-kb979309-x64_ce594b865dad7813773726b2d5e97d3f22a04895.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/03/windows6.0-kb978338-x64_174fbac7fc45f3f744a7e2dbd74bed85e5541ccb.msu

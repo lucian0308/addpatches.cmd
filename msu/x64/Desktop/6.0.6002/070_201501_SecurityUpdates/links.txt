@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windows6.0-kb3022777-x64_12ce4df961d4a31061032ff5e8c26cdc5a603b00.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windows6.0-kb3021674-x64_9a77d436a623074620b60650916fc5cc4d0e19ab.msu

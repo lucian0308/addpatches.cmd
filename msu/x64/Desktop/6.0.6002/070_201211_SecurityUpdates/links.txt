@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/10/windows6.0-kb2729453-x64_e7ec50e91c3a65e463aa4d18494f56e89fbd1f3d.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/10/windows6.0-kb2727528-x64_1e94088dc7084985038a1d980c59921a8c37c1d4.msu

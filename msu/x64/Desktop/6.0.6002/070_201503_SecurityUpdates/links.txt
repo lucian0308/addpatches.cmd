@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/02/windows6.0-kb3033889-x64_49906cb3486b8dee8c47650d7bd423855593d2e8.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/02/windows6.0-kb3035132-x64_a748e661e10480e5f7885e9d16ff7278ffba6e94.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/02/windows6.0-kb3035126-x64_d579ab02f12c73fc75586a53b014b37706a5cc9b.msu

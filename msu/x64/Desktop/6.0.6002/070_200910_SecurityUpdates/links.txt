@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/09/windows6.0-kb954155-x64_7fa78dbfa96540ae9c55e2bfff3da3edd8c86834.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2009/09/windows6.0-kb974571-x64_d3f150aaca465a0f25e029f8d96f77c420c30c0e.msu

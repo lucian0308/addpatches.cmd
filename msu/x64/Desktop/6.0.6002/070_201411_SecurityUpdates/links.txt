@@ -1,0 +1,6 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/09/windows6.0-kb2991963-x64_f4b05a9a4f2efe3a5f78a65d12477485cebabff3.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/10/windows6.0-kb3005607-x64_57008b7ae2f667341437892fe58def0a2a0ba542.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows6.0-kb3010788-x64_94c2f46de02c35397ba9ad8b595d49eed7a78f14.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows6.0-kb3003743-x64_74593a7d795206bb85e40a4ee76f6023fa56f68f.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/10/windows6.0-kb2978116-x64_682a9eea5c342f76595274d9acb13caba8b054e7.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/10/windows6.0-kb3011780-x64_c6135e518ffd1b053f1244a3f17d4c352c569c5b.msu

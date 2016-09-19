@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/updt/2009/10/windows6.0-kb972145-x64_286369dd143161123a8a571619f149de5e193347.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2009/10/windows6.0-kb960362-x64_9c78c54ee0bf67e3f18315126ce2ebdc1b884b41.msu

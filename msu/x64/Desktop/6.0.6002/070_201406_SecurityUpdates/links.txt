@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/05/windows6.0-kb2957189-x64_e3367b65ec0bfd6a1b04fd0ecc4a82974eea4bdd.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/05/windows6.0-kb2957509-x64_b657c9a8a87c0108ccebbdf099aaca4da57971db.msu

@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/updt/2010/02/windows6.0-kb975929-v2-x64_d32864c0274c49ee1ca62de6d0f110f6fb59b001.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2010/02/windows6.0-kb979099-x64_d2b03cc5acd062d368e0058008231c99bc002f47.msu

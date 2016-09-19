@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/08/windows6.0-kb975558-x64_2fdbab0f26cecca6fedb1e592b7b6f83fa6a0e8d.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/08/windows6.0-kb2347290-x64_67b5473b1b70525cd337b00bf8fb4a190e1ac7d3.msu

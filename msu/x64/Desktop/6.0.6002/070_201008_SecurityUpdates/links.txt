@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/07/windows6.0-kb982799-x64_b0f8336d4052c4cfcc8119177abbd6edf693b300.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/07/windows6.0-kb982665-x64_11285622b5d8baaf2bb0c78f862fd8dfda0ce282.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2010/07/windows6.0-kb981997-x64_b6e79aa90e7241e6951fd54e9588a91aa3dd8259.msu

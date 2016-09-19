@@ -1,0 +1,5 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows6.0-kb3139940-x64_3908ac8d76f0452e21e358d9235f0647cb62dacc.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows6.0-kb3135982-x64_908c309701b408e062bd206e990a218d1331b402.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/02/windows6.0-kb3139398-x64_0bee27ee3b8f130ce31d292ba706461236dbec04.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows6.0-kb3139914-x64_fb1546ee62327699f7a1d4cc7e5944fb47785355.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows6.0-kb3140709-x64_51fe5464c6a54680b934691fee9cf5b13ca9ada3.msu

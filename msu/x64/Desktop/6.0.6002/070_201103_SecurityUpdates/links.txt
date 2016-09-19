@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/01/windows6.0-kb2479943-x64_57f167cda1a0b30da839c9b7a2cd9995f05ed79a.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/02/windows6.0-kb2481109-x64_f359e61457df10c0d9514f73555a52e281431aa9.msu
