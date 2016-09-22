@@ -1,0 +1,5 @@
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows6.1-kb3179573-x64_0ec541490b3f7b02e41f26cb2c444cbd9e13df4d.msu
+http://download.windowsupdate.com/d/msdownload/update/software/crup/2016/08/windows6.1-kb3177467-x64_42467e48b4cfeb44112d819f50b0557d4f9bbb2f.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/09/windows6.1-kb3185278-x64_8134ec9d31dc04f4f47f832016a0a3f4b17e610b.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/09/windows6.1-kb3172605-x64_2bb9bc55f347eee34b1454b50c436eb6fd9301fc.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows6.1-kb3181988-x64_e6021f1254cf96f45d10d100e07079780cb24686.msu

@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows6.1-kb3108381-x64_0b39234a75bde39b2eb68eeb37c396b665ffc494.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows6.1-kb3108670-x64_4d0f2f897534e97e0b4e61ab5a2734f5f2c4a652.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows6.1-kb3109094-x64_229f0a31c680557039d084eb1a6249c17c921c8e.msu

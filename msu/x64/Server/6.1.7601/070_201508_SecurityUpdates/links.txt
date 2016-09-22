@@ -1,0 +1,6 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows6.1-kb3046017-x64_5451208ccc96f656f55f35fca5997801e1676bcb.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows6.1-kb3060716-x64_49727bab5e712459ea1889422f17a847732ff8f1.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows6.1-kb3071756-x64_b1aab0ef3752c52636409b50eb7853f645859e78.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows6.1-kb3076895-x64_6a8fb82fa391d09a078b7f6d63a070a481d0750b.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows6.1-kb3078601-x64_df86415b7464c74c360cc7d2f2d9a3e49509bcf1.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows6.1-kb3075226-x64_edcaa1b72946b2894f0a3debf08adb059d5a254b.msu

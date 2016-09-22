@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windows6.1-kb2506212-x64_d23437b7902566fdc1ab3c972f38b3370a1f25a3.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windows6.1-kb2511455-x64_5d1cb325b38204f75d302f85b98058d5937019fd.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2011/03/windows6.1-kb2509553-x64_48517ee2bd09479ad2d04c03e00f9b1460996469.msu

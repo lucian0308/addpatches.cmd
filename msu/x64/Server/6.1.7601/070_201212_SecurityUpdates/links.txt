@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/11/windows6.1-kb2765809-x64_0edd55c381ad702d282579c03d5d3de5299147ac.msu
+http://download.windowsupdate.com/msdownload/update/software/secu/2012/10/windows6.1-kb2758857-x64_b717b4e2168ab84dda2eb17c71a4a1adee502ba6.msu

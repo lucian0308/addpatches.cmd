@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/07/windows6.1-kb2864202-x64_92617ad813adf4795cd694d828558271086f4f70.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/09/windows6.1-kb2862335-x64_aa6d0d8b2cf846283878212589bb0614f5c461e0.msu

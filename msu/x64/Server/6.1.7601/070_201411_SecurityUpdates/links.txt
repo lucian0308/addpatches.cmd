@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/10/windows6.1-kb3003743-x64_8eccaa54eab26dda30369d118b9cf3aa4a42bc3a.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/11/windows6.1-kb3011780-x64_fdd28f07643e9f123cf935bc9be12f75ac0b4d80.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows6.1-kb2992611-x64_786356207570e1f5c422795f3c15961af3cb2d0a.msu

@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2013/06/windows6.1-kb2574819-v2-x64_a0b7ffff5c8fc9b2f16b323e582bcda3bbe972d5.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/10/windows6.1-kb2592687-x64_f5cd9f3dab8cdbbf287fee84148e8ea69042bcc3.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2013/08/windows6.1-kb2853952-x64_619538e685f0bc6bcde779a1a0b80ed5611f27e7.msu

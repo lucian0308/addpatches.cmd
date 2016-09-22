@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/04/windows6.1-kb3140245-x64_5b067ffb69a94a6e5f9da89ce88c658e52a0dec0.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/05/windows6.1-kb3139923-v2-x64_d9fe5636da3c4368f3f00f1142c10b2aff150279.msu

@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/02/windows6.1-kb2660075-x64_5722b20af2ebb81da4661a350e21d005e2d2b09b.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/02/windows6.1-kb2640148-v2-x64_32f195699b401df56e4c0562757308e9b1909a3a.msu

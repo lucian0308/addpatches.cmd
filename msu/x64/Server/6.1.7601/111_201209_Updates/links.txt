@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2719857-x64_b9f708b95abbab7341f310595b3dc65798cf316a.msu
+http://download.windowsupdate.com/msdownload/update/software/updt/2012/09/windows6.1-kb2732059-v5-x64_102edb47f7704f3f1deb4ae6ace3f7e4f0ee9765.msu
