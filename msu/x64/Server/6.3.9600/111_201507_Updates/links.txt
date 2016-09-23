@@ -1,0 +1,7 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3013791-x64_3f60476f80959e9b928ae97101a8376a3a53ecc7.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3060793-x64_ea4b15443766fdc39c31822b0ad9dcd9dac26975.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3060383-x64_7714ff6fbd63ff9293eb9e432e25c76103fe9f4a.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3063843-x64_57199ff97cd3ff29fc3cfe398effed9d32b992b5.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3059316-x64_deb4ee6fdd8795700d6138ede96fd2d3785022bb.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3054203-x64_7f2ecfc805f854a7b916e4c8ddb82e39a34d7692.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/06/windows8.1-kb3060681-x64_3d93a342294d6182c3bc9b0e91a7e740c3b1f372.msu

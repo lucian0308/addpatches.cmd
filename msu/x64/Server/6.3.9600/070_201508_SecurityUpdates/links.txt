@@ -1,0 +1,4 @@
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3046017-x64_cfd784ae9e40bcd30adf46d822bf48a601b218cb.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3071756-x64_481757325634850fec6798a4a7dcf67139e72aac.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3076895-x64_24498c2c6b322768636629f4fa65884696b35fe8.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3078601-x64_906ecf1448858a83420254d205e034b3b945e4ae.msu

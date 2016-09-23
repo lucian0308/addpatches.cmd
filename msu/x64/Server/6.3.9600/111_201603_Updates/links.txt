@@ -1,0 +1,9 @@
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/03/windows8.1-kb3139921-x64_13fa86ea2fa562884cc989780e954bba352c2c80.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3126033-x64_a00ad37f7f3f49afa0808936a4810ee23cb19203.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3118401-x64_2d9f2a496d7a35dc5e68b541b7218ecf00a68108.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3121255-x64_a842ab3bb996ba88f345b5330447c32b270e5b12.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/02/windows8.1-kb3121261-v2-x64_9f37a3954e0827aa581cb55f4ee565197f8fa937.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3123242-x64_84f6d6abc0f2f5fd3cc5a1a40f126a888310b796.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3128650-x64_c3fe43236b36b21596b7d4b7e5d218b12c4de115.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3133924-x64_1e6a30a7968729cace75273ad77b4694769aa376.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/02/windows8.1-kb3134815-x64_d2a194230bd97a046fcc69d418a5f5ee804bd812.msu

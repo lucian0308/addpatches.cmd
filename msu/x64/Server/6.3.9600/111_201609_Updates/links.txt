@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x64_f0a5e2ff991aec5e6978aa808f287f1b21195d6e.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/08/windows8.1-kb3185279-x64_f6714f6793fb14bfac28e84e5ffd184f1de98f8f.msu

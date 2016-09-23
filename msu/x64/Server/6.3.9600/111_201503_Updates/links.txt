@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/03/windows8.1-kb3012702-x64_082e460ce711abe34a624c1bdb083c2827eef524.msu
+http://download.windowsupdate.com/c/msdownload/update/software/updt/2015/03/windows8.1-kb3030947-x64_eaf388eb46ab5c991b2cea47d2d0f46114007e2b.msu

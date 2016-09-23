@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2014/11/windows8.1-kb3013410-x64_fe36a3ed764c365495ec35969c8075642a037ae9.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2014/11/windows8.1-kb3004394-x64_71b998bd0f7be77e3c1aa3a91c6aedf6d8c383fd.msu
