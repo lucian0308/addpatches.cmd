@@ -20,10 +20,11 @@ REM Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 cls
 setlocal EnableDelayedExpansion
 
+
 REM COMMON SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=True
+set dryrun=False
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
@@ -87,7 +88,7 @@ REM If True, the script will pause at the end
 REM If you press any key after the summary in the beginning !pause_end! will become automatically True
 set pause_end=False
 
-REM If True, this script will stop if a dism installation exits not with returncode 0, 3010 or 2359302
+REM If True, this script will stop if a dism installation exits not with returncde 0, 3010 or 2359302
 set dism_exitonerror=False
 
 REM COMMON SETTINGS END
@@ -95,7 +96,7 @@ REM COMMON SETTINGS END
 
 REM ONLINE SETTINGS START
 
-REM If True, this script will stop if a wusa installation exits not with returncode 0, 3010 or 2359302
+REM If True, this script will stop if a wusa installation exits not with returncde 0, 3010 or 2359302
 set wusa_exitonerror=False
 
 REM If True, the patches will added with dism instead of wusa
@@ -133,9 +134,17 @@ set isooutput_dir=%~dp0
 
 REM OFFLINE SETTINGS END
 
-set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
+set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
+if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
+if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%SYSTEMROOT%\System32\dism.exe
+
+set dism_version=?
+if exist "!dism_exe!" (
+	"!dism_exe!" /English > "!wiminfo!"
+	for /f "tokens=2*" %%a in ('type !wiminfo! ^| !find_exe! /i "Version:"') do set dism_version=%%a
+)
 
 set imagex_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
 if not exist "!imagex_exe!" set imagex_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
@@ -195,6 +204,7 @@ if not %ERRORLEVEL% == 0 (
 
 :info
 
+
 echo.
 echo Start time          : !TIME:~0,2!:!TIME:~3,2!
 
@@ -214,7 +224,7 @@ if "!downloadonly!"=="True" (
 		echo Used system         : Online
 				
 		if "!online_dism!"=="True" (
-			echo Install method      : dism
+			echo Install method      : dism ^(!dism_version!^)
 			echo Exit on dism error  : !dism_exitonerror!
 
 		) else (
@@ -226,7 +236,7 @@ if "!downloadonly!"=="True" (
 
 	) else (
 
-		echo Used system         : Offline
+		echo Used system         : Offline ^(dism !dism_version!^)
 		
 		echo WIM file            : !install_wim!
 		echo WIM Index           : !install_wim_index!
@@ -606,7 +616,7 @@ if not !exitcode!==0 (
 	goto end
 )
 
-"!timeout_exe!" /t 1 >nul 2>&1
+REM "!timeout_exe!" /t 1 >nul 2>&1
 
 :getenabledfeatures
 if "!downloadonly!"=="True" goto getjobs
@@ -672,7 +682,7 @@ if "!online!"=="True" (
 	
 )
 
-"!timeout_exe!" /t 1 >nul 2>&1
+REM "!timeout_exe!" /t 1 >nul 2>&1
 
 :getjobs
 
@@ -852,7 +862,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 		)		
 	)
 
-	"!timeout_exe!" /t 1 >nul 2>&1
+	REM "!timeout_exe!" /t 1 >nul 2>&1
 	
 	if not "!downloadonly!"=="True" (	
 		if exist *.msu (
@@ -952,7 +962,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 	
 		popd "!job_ap!"
 
-		"!timeout_exe!" /t 1 >nul 2>&1		
+		REM "!timeout_exe!" /t 1 >nul 2>&1		
 				
 		if not "!installallatonce!"=="True" (
 		
@@ -1100,7 +1110,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 	popd "!job_ap!"
 	popd "!patches_install!"
 	
-	"!timeout_exe!" /t 1 >nul 2>&1
+	REM "!timeout_exe!" /t 1 >nul 2>&1
 )
 
 if "!downloadonly!"=="True" goto end
@@ -1293,7 +1303,7 @@ if not !returncode!==0 (
 	goto end
 )
 
-"!timeout_exe!" /t 1 >nul 2>&1
+REM "!timeout_exe!" /t 1 >nul 2>&1
 
 set sortabledate=00000000
 for /f %%a in ('!wmic_exe! os get localdatetime ^| !find_exe! "."') do set sortabledate=%%a
@@ -1335,7 +1345,7 @@ if "!install_wim_copy!"=="True" (
 		goto end
 	)
 	
-	"!timeout_exe!" /t 1 >nul 2>&1
+	REM "!timeout_exe!" /t 1 >nul 2>&1
 
 )
 
@@ -1368,7 +1378,7 @@ if "!install_wim_createiso!"=="True" (
 
 ) 
 
-"!timeout_exe!" /t 1 >nul 2>&1
+REM "!timeout_exe!" /t 1 >nul 2>&1
 
 :end
 
@@ -1393,7 +1403,7 @@ if exist "!dism_exe!" (
 			echo ERROR discarding and unmounting mount dir
 		)
 		
-		"!timeout_exe!" /t 1 >nul 2>&1
+		REM "!timeout_exe!" /t 1 >nul 2>&1
 	)
 )
 
@@ -1426,7 +1436,7 @@ if "!online!"=="True" (
 			echo ERROR stopping wuauserv
 		)
 		
-		"!timeout_exe!" /t 1 >nul 2>&1
+		REM "!timeout_exe!" /t 1 >nul 2>&1
 	)
 	
 	if "!wu_reg_savedvalue!"=="?" (
