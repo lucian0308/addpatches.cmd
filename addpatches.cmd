@@ -136,14 +136,22 @@ REM OFFLINE SETTINGS END
 
 set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
+
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
+
 if not exist "!dism_exe!" set dism_exe=%SYSTEMROOT%\System32\dism.exe
 
-set imagex_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
+set imagex_exe=%PROGRAMFILES(x86)%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
+if not exist "!imagex_exe!" set imagex_exe=%PROGRAMFILES%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
+
+if not exist "!imagex_exe!" set imagex_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
 if not exist "!imagex_exe!" set imagex_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
 
-set osdcimg_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\Oscdimg\oscdimg.exe
+set osdcimg_exe=%PROGRAMFILES(x86)%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\Oscdimg\oscdimg.exe
+if not exist "!osdcimg_exe!" set osdcimg_exe=%PROGRAMFILES%\Windows Kits\8.1\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\Oscdimg\oscdimg.exe
+
+if not exist "!osdcimg_exe!" set osdcimg_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\Oscdimg\oscdimg.exe
 if not exist "!osdcimg_exe!" set osdcimg_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\Oscdimg\oscdimg.exe
 
 set timeout_exe=%SYSTEMROOT%\System32\timeout.exe
@@ -563,10 +571,21 @@ if not "!force_version!"=="" (
 
 del /f /q "!wiminfo!" >nul 2>&1
 
-if "!online!"=="False" if "!version!"=="6.0.6002" (
-	echo.
-	echo ERROR Offline serving not supported for !name! ^(!version!^)
-	goto end
+if "!online!"=="False" (
+
+	if "!version!"=="6.0.6002" (
+		echo.
+		echo ERROR Offline serving not supported for !name! ^(!version!^)
+		goto end
+	)
+	if "!version!"=="6.3.9600" (
+		echo !dism_version! | !find_exe! "6.3.9600" >nul 2>&1
+		if not !ERRORLEVEL!==0 (
+			echo.
+			echo ERROR Offline serving not supported with dism version !dism_version! for !name! ^(!version!^)
+			goto end
+		)	
+	)
 
 )
 
