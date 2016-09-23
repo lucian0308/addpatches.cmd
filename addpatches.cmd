@@ -28,7 +28,7 @@ set dryrun=True
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
-set online=True
+set online=False
 
 REM Location of the msu files
 set patches_dir=%~dp0msu
@@ -605,7 +605,7 @@ if "!install_wim_copy!"=="True" (
 	)
 	
 	if "!dryrun!"=="True" (
-		echo|set /p= !TIME:~0,2!:!TIME:~3,2! Would export !install_wim_index! of wim file to work dir... 
+		echo !TIME:~0,2!:!TIME:~3,2! Would export !install_wim_index! of wim file to work dir... 
 	) else (
 		
 		set temp_install_wim=!work_dir!\temp_install.wim
