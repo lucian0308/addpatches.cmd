@@ -24,7 +24,7 @@ setlocal EnableDelayedExpansion
 REM COMMON SETTINGS START
 
 REM If True, the script only shows, what it would do
-set dryrun=False
+set dryrun=True
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
@@ -140,12 +140,6 @@ if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Asses
 if not exist "!dism_exe!" set dism_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\dism.exe
 if not exist "!dism_exe!" set dism_exe=%SYSTEMROOT%\System32\dism.exe
 
-set dism_version=?
-if exist "!dism_exe!" (
-	"!dism_exe!" /English > "!wiminfo!"
-	for /f "tokens=2*" %%a in ('type !wiminfo! ^| !find_exe! /i "Version:"') do set dism_version=%%a
-)
-
 set imagex_exe=%PROGRAMFILES(x86)%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
 if not exist "!imagex_exe!" set imagex_exe=%PROGRAMFILES%\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\%PROCESSOR_ARCHITECTURE%\DISM\imagex.exe
 
@@ -162,6 +156,13 @@ set expand_exe=%SYSTEMROOT%\System32\expand.exe
 
 set wusa_exe=%SYSTEMROOT%\SysNative\wusa.exe
 if not exist "!wusa_exe!" set wusa_exe=%SYSTEMROOT%\System32\wusa.exe
+
+set dism_version=?
+if exist "!dism_exe!" (
+	"!dism_exe!" /English > "C:\dism_version.txt"
+	for /f "tokens=2*" %%a in ('type C:\dism_version.txt ^| !find_exe! /i "Version:"') do set dism_version=%%a
+	del /f /q "C:\dism_version.txt"
+)
 
 set powershell_exe=%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe
 
