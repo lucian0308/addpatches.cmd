@@ -1,2 +1,0 @@
-http://download.windowsupdate.com/c/msdownload/update/software/uprl/2016/06/windows8.1-kb3162835-x64_797b8955e0450304a4085fa8267ed04bd9016751.msu
-http://download.windowsupdate.com/d/msdownload/update/software/uprl/2015/07/windows8.1-kb3038936-x64_c219da97f6fa57558050f5c99a88dbc92becd7a8.msu
