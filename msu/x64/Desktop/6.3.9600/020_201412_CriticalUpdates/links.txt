@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/crup/2014/12/windows8.1-kb2994290-x64_e236f61f3f28696cf9a7cd67fb292892827e9fb2.msu
+http://download.windowsupdate.com/c/msdownload/update/software/crup/2014/11/windows8.1-kb3008242-x64_969750d7a771e21812b8cc27a7432ffbec32f0df.msu

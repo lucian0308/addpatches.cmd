@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/10/windows8.1-kb3095108-x64_4906b0a8c7fe85c9f7164b348282975a2bd5d686.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2015/10/windows8.1-kb3034348-v3-x64_db3543dc23c9f12b06edfa5c89da9773bdd44576.msu

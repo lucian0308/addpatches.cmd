@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/08/windows8.1-kb2894856-v2-x64_929d16faacd7b226e8f06448bf3c9eeac8573967.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/08/windows8.1-kb2977765-x64_c83e14f82731ec26b428170304a3dbed3e3aa8ef.msu
