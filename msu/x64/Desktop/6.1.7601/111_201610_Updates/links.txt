@@ -1,0 +1,3 @@
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/09/windows6.1-kb2952664-v20-x64_4cffa82658159f45e9ad7904bd930d22805bc2fa.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows6.1-kb3181988-x64_e6021f1254cf96f45d10d100e07079780cb24686.msu
+http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/09/windows6.1-kb3184143-x64_6db4ed132eacefab0f780ef5ce4611ffe4f577a4.msu
