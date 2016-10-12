@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/10/windows8.1-kb3194343-x64_d3566481791ef6a5b0f9ef734456328e4a156d91.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/10/windows8.1-kb3185331-x64_002b4adeeedca7cd33b827b6531a0ebee9c0d404.msu
