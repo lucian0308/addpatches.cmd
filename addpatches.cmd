@@ -28,7 +28,7 @@ set dryrun=True
 
 REM If True, the patches will be installed to the online system - see ONLINE SETTINGS
 REM Otherwise the script will try to use the !install_wim! - see OFFLINE SETTINGS
-set online=False
+set online=True
 
 REM Location of the msu files
 set patches_dir=%~dp0msu
@@ -81,6 +81,9 @@ REM If True , the script will try to install all patches in a single session
 REM Otherwise one session for each job/dir
 set installallatonce=True
 
+REM If True and installallatonce=True the script will do a second run, to install possibly missing patches
+set secondrun=True
+
 REM If True, log it a package is already downloaded and/or installed
 set log_found=True
 
@@ -112,7 +115,7 @@ REM ONLINE SETTINGS END
 
 REM OFFLINE SETTINGS START
 
-REM Commit after each session/jobdir
+REM If True, the script will commit the changes after each session/jobdir
 set commit=True
 
 REM The .wim-file of the offline system
@@ -280,7 +283,10 @@ if not "!downloadonly!"=="True" (
 	set installmethod=only missing
 	if !force_install!=="True" set installmethod=all
 	echo Install             : !installmethod!
-	if "!installallatonce!"=="True" echo Install all at once : !installallatonce!
+	if "!installallatonce!"=="True" (
+		echo Install all at once : !installallatonce!
+		if "!secondrun!"=="True" echo Second run          : !secondrun!
+	)
 )
 
 start "" /belownormal /b cmd /q /d /c "!timeout_exe! 30 /nobreak > nul"
@@ -706,25 +712,25 @@ REM "!timeout_exe!" /t 1 >nul 2>&1
 
 :getjobs
 
-set patches_dir=!patches_dir!\!arch!\!producttype!\!version!
-set patches_dir=%patches_dir%
+set patches_dir_system=!patches_dir!\!arch!\!producttype!\!version!
+set patches_dir_system=%patches_dir_system%
 
-if not exist "!patches_dir!" (
+if not exist "!patches_dir_system!" (
 
 	echo.
 	echo ERROR no matching dir found for !arch!\!producttype!\!version!
 	
-	echo|set /p=Creating dir !patches_dir!...
-	md "!patches_dir!" >nul 2>&1
+	echo|set /p=Creating dir !patches_dir_system!...
+	md "!patches_dir_system!" >nul 2>&1
 	echo !ERRORLEVEL!
 	
 	goto end
 )
 
-for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches_dir!"') do (
+for /f "tokens=*" %%d in ('dir /b /a:d /o:n "!patches_dir_system!"') do (
 
 	set subdir_name=%%d
-	set subdir_ap=!patches_dir!\!subdir_name!
+	set subdir_ap=!patches_dir_system!\!subdir_name!
 	
 	if exist "!subdir_ap!\links.txt" (
 		echo !subdir_name! >> "!jobs!"
@@ -801,7 +807,7 @@ for /f "tokens=*" %%j in (!jobs!) do (
 	
 	set job_name=%%j
 	
-	set job_ap=!patches_dir!\!job_name!
+	set job_ap=!patches_dir_system!\!job_name!
 	pushd "!job_ap!"
 
 	echo.
@@ -1277,7 +1283,22 @@ if "!installallatonce!"=="True" (
 					)
 				)
 			)
-		)		
+		)
+
+	if "!secondrun!"=="True" (
+		
+		echo.
+		echo --------
+		echo !TIME:~0,2!:!TIME:~3,2! Doing second run:
+		echo --------
+		echo.
+		timeout /t 3 >nul 2>&1
+		
+		set secondrun=False
+		rmdir /s /q "!patches_install!" >nul 2>&1
+		goto getinstalledpatches
+	)
+	
 	) else (
 		
 		if not "!dryrun!"=="True" (
