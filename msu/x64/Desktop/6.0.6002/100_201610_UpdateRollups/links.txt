@@ -1,0 +1,2 @@
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/09/windows6.0-kb3183431-x64_bf6fe91703fd4da37648a3f3cbd574606e630c1a.msu
+http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/09/windows6.0-kb3191203-x64_05e165673951228ca651faa659dd24341efda6f4.msu

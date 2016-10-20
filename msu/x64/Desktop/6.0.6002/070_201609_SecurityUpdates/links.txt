@@ -3,3 +3,4 @@ http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/wind
 http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windows6.0-kb3177186-x64_8e700fb6bf1381bba00e9fab535b92f0d0b55eae.msu
 http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windows6.0-kb3184122-x64_586c841fddc62fa16a6b94778b2fa765b194ba3f.msu
 http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windows6.0-kb3185911-x64_b3edd2f8de09e7451767ee73658ec54b394228c3.msu
+http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windows6.0-kb3185911-x64_b3edd2f8de09e7451767ee73658ec54b394228c3.msu
